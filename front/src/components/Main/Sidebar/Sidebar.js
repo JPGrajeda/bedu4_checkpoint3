@@ -10,10 +10,10 @@ const Sidebar = (props) => {
 
     return(
         <div>
-            <SideNav className='blue-grey darken-3' style={sbar} fixed>
-                <SideNavItem id="1">Ingresos</SideNavItem>
-                <SideNavItem id="2">Serivicios</SideNavItem>
-                <SideNavItem id="3">Item 3</SideNavItem>
+            <SideNav id='SideNav' className='blue-grey darken-3' style={sbar} fixed>
+                <SideNavItem className='textCoiny txt-15 active'>Ingresos</SideNavItem>
+                <SideNavItem className='textCoiny txt-15'>Serivicios</SideNavItem>
+                <SideNavItem className='textCoiny txt-15'>Item 3</SideNavItem>
             </SideNav>
         </div>
     );

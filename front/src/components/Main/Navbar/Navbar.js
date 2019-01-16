@@ -16,13 +16,15 @@ class Upbar  extends Component {
                 <Navbar 
                     className='blue-grey darken-4'
                     brand={
-                        <img src='img/Wallet1.png' className="brand responsive-img"></img> 
+                        <div className='valign-wrapper'>
+                            <img src='./img/Wallet1.png' className="brand responsive-img" alt='Logo'></img>
+                            <span className='txtCoiny'>WatchWallet</span>
+                        </div>
                     }
                     right 
                     fixed
                 >
-                    <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-                    <NavItem href='components.html'>Components</NavItem>
+                    <NavItem onClick={() => console.log('test click')}>Cerrar Sesion</NavItem>
                 </Navbar>
             </div>
     
