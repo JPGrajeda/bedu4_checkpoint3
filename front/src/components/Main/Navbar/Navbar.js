@@ -11,9 +11,8 @@ class Upbar  extends Component {
     render(){
 
         return (
-    
-            <div>
-                <Navbar 
+            <>
+                <Navbar id='Navbar'
                     className='blue-grey darken-4'
                     brand={
                         <div className='valign-wrapper'>
@@ -24,10 +23,9 @@ class Upbar  extends Component {
                     right 
                     fixed
                 >
-                    <NavItem onClick={() => console.log('test click')}>Cerrar Sesion</NavItem>
+                    <NavItem onClick={() => console.log('test click')} className='green-1'>Cerrar Sesion</NavItem>
                 </Navbar>
-            </div>
-    
+            </>
         )
 
     }
