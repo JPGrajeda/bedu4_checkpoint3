@@ -3,9 +3,28 @@ import React from 'react';
 const Landingpage  = () => {
 
     return(
-        <div>
-            <h1> Landingpage </h1>
-        </div>
+        <>
+            <header>
+                <div className='container'>
+                    HEADER
+                </div>
+            </header>
+
+            <main class="valign-wrapper">
+
+                <section className='container'>
+                    SECTION
+                </section>
+
+            </main>
+
+            <footer>
+                <div className='container'>
+                    FOOTER
+                </div>
+            </footer>
+
+        </>
     )
 
 }

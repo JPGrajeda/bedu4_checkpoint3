@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // styles
-import './Navbar.css';
+import stylesNav from './Navbar.module.css';
 
 // components materialize
 import {Navbar, NavItem} from 'react-materialize'
@@ -16,7 +16,7 @@ class Upbar  extends Component {
                     className='blue-grey darken-4'
                     brand={
                         <div className='valign-wrapper'>
-                            <img src='./img/Wallet1.png' className="brand responsive-img" alt='Logo'></img>
+                            <img src='./img/Wallet1.png' className={`${stylesNav.brand} responsive-img`}   alt='Logo'></img>
                             <span className='txtCoiny'>WatchWallet</span>
                         </div>
                     }

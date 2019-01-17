@@ -8,10 +8,10 @@ import Dashboard from "./Dashboard/Dashboard";
 import Landingpage from "./Landingpage/Landingpage";
 
 const Main = (props) => (
-        <div>
-          <Route exact path="/" render={ Landingpage }></Route>
-          <Route exact path="/dashboard" render={ Dashboard }></Route>
-        </div>
+        <>
+            <Route exact path="/" render={ Landingpage }></Route>
+            <Route exact path="/dashboard" render={ Dashboard }></Route>
+        </>
     )
 
 export default Main;
