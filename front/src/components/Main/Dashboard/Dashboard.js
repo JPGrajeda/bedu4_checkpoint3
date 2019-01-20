@@ -15,7 +15,7 @@ const Dashboard = props => {
             <Upbar/>
             <Sidebar/>
             <div className={styles.content}>
-                <Content/>
+                <Content {...props}/>
             </div>
         </>
     )

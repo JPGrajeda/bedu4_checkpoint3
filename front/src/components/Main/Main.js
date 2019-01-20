@@ -1,17 +1,19 @@
-import React from 'react';
+import React from 'react'
 
 // Router
-import { Route } from "react-router-dom";
+import { Switch , Route } from "react-router-dom"
 
 // Components
-import Dashboard from "./Dashboard/Dashboard";
-import Landingpage from "./Landingpage/Landingpage";
+import Dashboard from "./Dashboard/Dashboard"
+import Landingpage from "./Landingpage/Landingpage"
 
-const Main = (props) => (
+const Main = () => (
         <>
-            <Route exact path="/" render={ Landingpage }></Route>
-            <Route exact path="/dashboard" render={ Dashboard }></Route>
+            <Switch>
+                <Route exact path="/" component={ Landingpage }></Route>
+                <Route path="/dashboard" component={ Dashboard }></Route>
+            </Switch>
         </>
     )
 
-export default Main;
+export default Main
