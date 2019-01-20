@@ -3,12 +3,30 @@ import React from 'react';
 import Login from './Login/Login';
 
 const Landingpage  = () => {
-    
+
     return(
-        <div>
-            <h1> Landingpage </h1>
-             <Login></Login>   
-        </div>
+        <>
+            <header>
+                <div className='container'>
+                    HEADER
+                </div>
+            </header>
+
+            <main class="valign-wrapper">
+
+                <section className='container'>
+                    SECTION
+                </section>
+
+            </main>
+
+            <footer>
+                <div className='container'>
+                    FOOTER
+                </div>
+            </footer>
+
+        </>
     )
 
 }
