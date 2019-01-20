@@ -1,10 +1,13 @@
 import React from 'react';
 
-const Landingpage  = () => {
+import Login from './Login/Login';
 
+const Landingpage  = () => {
+    
     return(
         <div>
             <h1> Landingpage </h1>
+             <Login></Login>   
         </div>
     )
 
