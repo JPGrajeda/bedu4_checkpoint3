@@ -18,27 +18,7 @@ const Landingpage  = () => {
                <FooterLogin></FooterLogin>
            </div>
         </div>
-
-        /*<>
-            <header>
-                <NavBar></NavBar>
-            </header>
-
-            <main class="valign-wrapper">
-
-                <section className=''>
-                    <Login></Login>
-                </section>
-
-            </main>
-
-            <footer>
-                <div className='container'>
-                    FOOTER
-                </div>
-            </footer>
-
-        </>*/
+        
     )
 
 }

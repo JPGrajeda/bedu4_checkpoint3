@@ -26,7 +26,7 @@ class Login extends Component {
                     <Col l={4} m={3} s={12} className= " center-align" >
                         <div className= {styles.padingLogin}>
                             <Card className= {styles.backgroundCard} >
-                                <h5>Sign in to Watch Wallet</h5>
+                                <h5>Sign in</h5>
                                 <Input  label="User" s={12} />
                                 <Input type="password" label="Password" s={12} />
                                 <Button onClick={this.checkLogingStatusCode}>Sign in</Button>
