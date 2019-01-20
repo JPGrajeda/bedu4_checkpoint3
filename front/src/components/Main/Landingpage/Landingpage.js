@@ -1,21 +1,33 @@
 import React from 'react';
 
 import Login from './Login/Login';
-
+import NavBar from './Navbar/Navbar'
+import FooterLogin from './Footer/Footer';
 const Landingpage  = () => {
 
     return(
-        <>
+
+        <div>
+           <div>
+                <NavBar></NavBar>
+           </div>
+           <div>
+                <Login></Login>
+           </div>
+           <div>
+               <FooterLogin></FooterLogin>
+           </div>
+        </div>
+
+        /*<>
             <header>
-                <div className='container'>
-                    HEADER
-                </div>
+                <NavBar></NavBar>
             </header>
 
             <main class="valign-wrapper">
 
-                <section className='container'>
-                    SECTION
+                <section className=''>
+                    <Login></Login>
                 </section>
 
             </main>
@@ -26,7 +38,7 @@ const Landingpage  = () => {
                 </div>
             </footer>
 
-        </>
+        </>*/
     )
 
 }
