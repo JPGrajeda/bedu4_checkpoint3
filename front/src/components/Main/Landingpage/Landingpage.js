@@ -1,30 +1,24 @@
 import React from 'react';
 
+import Login from './Login/Login';
+import NavBar from './Navbar/Navbar'
+import FooterLogin from './Footer/Footer';
 const Landingpage  = () => {
 
     return(
-        <>
-            <header>
-                <div className='container'>
-                    HEADER
-                </div>
-            </header>
 
-            <main class="valign-wrapper">
-
-                <section className='container'>
-                    SECTION
-                </section>
-
-            </main>
-
-            <footer>
-                <div className='container'>
-                    FOOTER
-                </div>
-            </footer>
-
-        </>
+        <div>
+           <div>
+                <NavBar></NavBar>
+           </div>
+           <div>
+                <Login></Login>
+           </div>
+           <div>
+               <FooterLogin></FooterLogin>
+           </div>
+        </div>
+        
     )
 
 }

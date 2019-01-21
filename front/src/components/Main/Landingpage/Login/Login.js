@@ -1,36 +1,77 @@
 import React, { Component } from "react";
-// import "./Login.css";
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
+import { Button, Row, Col, Card, Input}from "react-materialize";
+import {  withRouter } from 'react-router-dom';
+// styles
+import styles from './Login.module.css';
 
-    this.state = {
-      user: "",
-      password: ""
-    };
-  }
+class Login extends Component {
 
-  validateForm() {
-    return this.state.user.length > 0 && this.state.password.length > 0;
-  }
+    state= {
+        data: [],
+        password: '',
+        nombre:'',
+        access: false
+    }
+    
+    nombre = e => this.setState({nombre: e.target.value });
+    password = e => this.setState({password: e.target.value });
+  
+    checkUserAndPassword = e => {
+        const { nombre, password} = this.state;
+        e.preventDefault();
+        fetch('http://localhost:3005/autenticar',{
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(
+            // Model
+            {
+                username: nombre,
+                password: password}
+          )
+        })
+          .then((data)=> {
+            if(data.status === 200){
+             return this.props.history.push("/dashboard");
+            }else {
+                alert("you dont have access Try Again!");
+            }
+          })
+    
+      }
+    
 
-  handleChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  }
+    render(){
+     
+        return(
+            <div className ="green-1">
+                <Row className = {styles.gridTemplate }>
+                    <Col l={4} m={3} s={12} className= " center-align" >
+                        <div className= {styles.padingLogin}>
+                            <Card className= {styles.backgroundCard} >
+                                <h5>Sign in</h5>
+                                <form onSubmit={e=> this.checkUserAndPassword(e)}>
+                                    <Input onChange={e=> this.nombre(e)} label="nombre" s={12} />
+                                    <Input onChange={e=> this.password(e)} type="password" label="Password" s={12} />
+                                    <Button type="submit">Sign in</Button>
+                                </form>
+                            </Card>
+                        </div>
+                    </Col>
+                    <Col l={8} m={9} s={12}  className = {styles.colForm}>
+                        <img className= {styles.backgroundImgLogin} src='./img/background_login_complete.jpg' alt= "background"></img>
+                        
+                    </Col>
+                </Row>
+                
+            </div>
 
-  handleSubmit = event => {
-    event.preventDefault();
-  }
+        )
+    }
 
-  render() {
-    return (
-      <div className="Login">
-        sdfsdsdf
-      </div>
-    );
-  }
 }
 
+export default withRouter (Login);
