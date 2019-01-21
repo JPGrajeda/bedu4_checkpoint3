@@ -6,6 +6,9 @@ import stylesInicio from './Inicio.module.css';
 // components materialize
 import {Row, Col, CardPanel, Collection, CollectionItem, Button, Icon } from 'react-materialize'
 
+// components react
+import Graphics from './Graphics/Graphics';
+
 const Inicio = () => {
     return(
         <>
@@ -16,19 +19,19 @@ const Inicio = () => {
                 <Row className='m-0'>
                   <Col m={4}>
                     <CardPanel className="black-text">
-                      <h5>kljsdljf</h5>
+                      <h5>Saldo Pendiente</h5>
                       <div class="divider"></div>
                     </CardPanel>
                   </Col>
                   <Col m={4}>
                     <CardPanel className="black-text">
-                      <h5>kljsdljf</h5>
+                      <h5>Saldo Disponible</h5>
                       <div class="divider"></div>
                     </CardPanel>
                   </Col>
                   <Col m={4}>
                     <CardPanel className="black-text">
-                      <h5>kljsdljf</h5>
+                      <h5>Fecha Corte</h5>
                       <div class="divider"></div>
                     </CardPanel>
                   </Col>
@@ -61,7 +64,10 @@ const Inicio = () => {
               <Col m={9}>
                 {/* Graficas  */}
                 <CardPanel className="black-text">
-                  Estadisticas
+                  
+                  <Graphics></Graphics>
+
+
                 </CardPanel>
                 {/* servicios */}
                 <CardPanel className="black-text">
