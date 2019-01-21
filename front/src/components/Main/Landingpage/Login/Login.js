@@ -1,25 +1,51 @@
 import React, { Component } from "react";
 
 import { Button, Row, Col, Card, Input}from "react-materialize";
-import {  Redirect } from 'react-router-dom';
+import {  withRouter } from 'react-router-dom';
 // styles
 import styles from './Login.module.css';
 
 class Login extends Component {
 
     state= {
+        data: [],
+        password: '',
+        nombre:'',
         access: false
     }
+    
+    nombre = e => this.setState({nombre: e.target.value });
+    password = e => this.setState({password: e.target.value });
+  
+    checkUserAndPassword = e => {
+        const { nombre, password} = this.state;
+        e.preventDefault();
+        fetch('http://localhost:3005/autenticar',{
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(
+            // Model
+            {
+                username: nombre,
+                password: password}
+          )
+        })
+          .then((data)=> {
+            if(data.status === 200){
+             return this.props.history.push("/dashboard");
+            }else {
+                alert("you dont have access Try Again!");
+            }
+          })
+    
+      }
+    
 
-    checkLogingStatusCode= () => {
-        this.setState({access: true})
-    }
     render(){
-        if(this.state.access){
-            return <Redirect to = "/dashboard"></Redirect>
-        }else {
-
-        }
+     
         return(
             <div className ="green-1">
                 <Row className = {styles.gridTemplate }>
@@ -27,9 +53,11 @@ class Login extends Component {
                         <div className= {styles.padingLogin}>
                             <Card className= {styles.backgroundCard} >
                                 <h5>Sign in</h5>
-                                <Input  label="User" s={12} />
-                                <Input type="password" label="Password" s={12} />
-                                <Button onClick={this.checkLogingStatusCode}>Sign in</Button>
+                                <form onSubmit={e=> this.checkUserAndPassword(e)}>
+                                    <Input onChange={e=> this.nombre(e)} label="nombre" s={12} />
+                                    <Input onChange={e=> this.password(e)} type="password" label="Password" s={12} />
+                                    <Button type="submit">Sign in</Button>
+                                </form>
                             </Card>
                         </div>
                     </Col>
@@ -46,4 +74,4 @@ class Login extends Component {
 
 }
 
-export default Login;
+export default withRouter (Login);

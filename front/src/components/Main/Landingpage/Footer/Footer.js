@@ -17,21 +17,21 @@ class FooterLogin  extends Component {
                     </div>
                     <Col l={4} m={4} s={12}>
                         <div className= "center">
-                            <i class="large material-icons ">touch_app</i>
+                            <i className="large material-icons ">touch_app</i>
                             <h5 className= "black-text"> Anywhere and Anytime</h5>
                             <p>ssssssssssssssssssssssss</p>
                         </div>
                     </Col >
                     <Col l={4} m={4} s={12}>
                         <div className= "center">
-                            <i class="large material-icons ">payment</i>
+                            <i className="large material-icons ">payment</i>
                             <h5 className= "black-text">Your pay always will be on time </h5>
                             <p>sssssssssssssssssssssss</p>
                         </div>
                     </Col>
                     <Col l={4} m={4} s={12}>
                         <div className= "center">
-                             <i class="large material-icons">security</i>
+                             <i className="large material-icons">security</i>
                              <h5 className= "black-text">Reliable and Safe</h5>
                              <p>sssss</p>
                         </div>
