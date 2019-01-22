@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 
-import { Button, Row, Col, Card, Input}from "react-materialize";
+import { Button, Row, Col, Card, Input, Tab, Tabs}from "react-materialize";
 import {  withRouter } from 'react-router-dom';
 // styles
 import styles from './Login.module.css';
+
 
 class Login extends Component {
 
@@ -47,18 +48,36 @@ class Login extends Component {
     render(){
      
         return(
-            <div className ="green-1">
+            <div className ="green-2">
+
                 <Row className = {styles.gridTemplate }>
                     <Col l={4} m={3} s={12} className= " center-align" >
-                        <div className= {styles.padingLogin}>
-                            <Card className= {styles.backgroundCard} >
-                                <h5>Sign in</h5>
-                                <form onSubmit={e=> this.checkUserAndPassword(e)}>
-                                    <Input onChange={e=> this.nombre(e)} label="nombre" s={12} />
-                                    <Input onChange={e=> this.password(e)} type="password" label="Password" s={12} />
-                                    <Button type="submit">Sign in</Button>
-                                </form>
-                            </Card>
+                        <div className= {styles.padingLogin }>
+                            <Tabs >
+                                <Tab className= "" title="Sign in" className={styles.tabs} active >
+                                    <Card className= {styles.backgroundCard} >
+                                        <h5>Sign in</h5>
+                                        <form onSubmit={e=> this.checkUserAndPassword(e)}>
+                                            <Input onChange={e=> this.nombre(e)} label="nombre" s={12} />
+                                            <Input onChange={e=> this.password(e)} type="password" label="Password" s={12} />
+                                            <Button type="submit">Sign in</Button>
+                                        </form>
+                                    </Card>
+                                </Tab>
+                                <Tab title="Sign up">
+                                    <Card className= {styles.backgroundCard} >
+                                        <h5>Sign up</h5>
+                                        <form>
+                                            <Input label="Nombre" s={12} />
+                                            <Input label="Correo" s={12} />
+                                            <Input type="password" label="Password" s={12} />
+                                            <Input type="password" label="Confirma Password" s={12} />
+                                            <Button type="submit">Sign up</Button>
+                                        </form>
+                                    </Card>
+                                </Tab>
+                            </Tabs>
+                        
                         </div>
                     </Col>
                     <Col l={8} m={9} s={12}  className = {styles.colForm}>

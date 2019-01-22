@@ -4,6 +4,11 @@
   background-color: rgba(69, 179, 156, 1);
 }
 
+.green-2 {
+  background-color: rgba(69, 179, 156, .1);
+  
+}
+
 /* Fonts */
 .txtCoiny{
   font-family: 'Coiny', cursive;

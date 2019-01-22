@@ -63,7 +63,16 @@ class FooterLogin  extends Component {
                         ]} />
                         </div>  
                 </Row>
-                <Row>
+                <Row className="">
+                 <Col  l={4} m={4} s={12} className="white-text">
+                    <h5>Conocenos</h5>
+                 </Col>
+                 <Col  l={4} m={4} s={12} className="white-text"> 
+                    <h5>Podemos ayudarte</h5>
+                 </Col>
+                 <Col  l={4} m={4} s={12}className="white-text">
+                   <h5>Afiliate</h5>
+                 </Col>
                  <Footer
                     copyrights="© 2019 Watch Wallet Latam - A Mountain Nazca-Company. Todos los derechos reservados.Términos y Condiciones Política de privacidad"
                      className='blue-grey darken-4' >

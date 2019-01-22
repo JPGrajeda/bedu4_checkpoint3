@@ -21,8 +21,7 @@ class NavBar  extends Component {
                     right 
                     fixed
                 >
-                    <NavItem className=''>Sign in</NavItem>
-                    <NavItem className=''>Sign up</NavItem>
+                
                 </Navbar>
         )
 
