@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 
 // styles
 import stylesNav from './Navbar.module.css';
@@ -14,7 +14,7 @@ const Upbar = () => {
                 className='blue-grey darken-4'
                 brand={
                     <div className='valign-wrapper'>
-                        <img src='./img/Wallet1.png' className={`${stylesNav.brand} responsive-img`}   alt='Logo'></img>
+                        <img src='./img/Wallet4.png' className={`${stylesNav.brand} responsive-img`}   alt='Logo'></img>
                         <span className='txtCoiny'>WatchWallet</span>
                     </div>
                 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Bar, HorizontalBar, Pie, Line} from 'react-chartjs-2';
+import {Bar, Pie, Line} from 'react-chartjs-2';
 
 // components materialize
 import {Row, Col, CardPanel } from 'react-materialize';
@@ -86,7 +86,7 @@ class Graphics extends Component {
         return(
             <>
                     <Row>
-                        <Col m="6"> 
+                        <Col m={6}> 
                             <CardPanel className="green-1-light black-text">
                                 < Pie 
                                     data={dataPie}
@@ -94,7 +94,7 @@ class Graphics extends Component {
                                 />
                             </CardPanel>
                         </Col>
-                        <Col m="6">
+                        <Col m={6}>
                             <CardPanel className="green-1-light black-text">
                                 < Bar 
                                     data={data}
@@ -107,7 +107,7 @@ class Graphics extends Component {
                         
                     </Row>
                     <Row>
-                        <Col m="12">
+                        <Col m={12}>
                             <CardPanel className="green-1-light black-text">
                                 <Line 
                                         data={dataLine}
@@ -115,39 +115,6 @@ class Graphics extends Component {
                             </CardPanel>
                          </Col>
                     </Row>
-
-                       <Row>
-                         {/* <Col xs="6" sm="4"> 
-                             < HorizontalBar 
-                                 data={data}
-                             />
-                         </Col>
-                         <Col xs="6" sm="2">
-                             <Card body inverse color="warning">
-                                 <CardTitle>Saldo Pendiente</CardTitle>
-                                 <CardText>$25,542.98</CardText>
-                             </Card>
-                         </Col>
-                         <Col sm="2">
-                         <Card body inverse color="info">
-                                 <CardTitle>Saldo Disponible</CardTitle>
-                                 <CardText>$5,542.98</CardText>
-                             </Card>
-                         </Col>
-                         <Col sm="2">      
-                         <Card body inverse color="danger">
-                                 <CardTitle>Fecha Corte</CardTitle>
-                                 <CardText>26 Enero 2019</CardText>
-                             </Card>
-                         </Col>
-                         <Col sm="2">     
-                         <Card body inverse color="success">
-                                 <CardTitle>AVISO:</CardTitle>
-                                 <CardText>Su saldo minimo para no generar intereses es: 387.69</CardText>
-                             </Card>
-                         </Col> */}
-                      </Row>
-
             </>
             )
         }

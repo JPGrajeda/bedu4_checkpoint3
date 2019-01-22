@@ -22,9 +22,34 @@
   font-weight: 600;
 }
 
+/* Divs */
+.divFlex-space-betwwen{
+  display: flex;
+  justify-content: space-between;
+}
+
+.divFlex-center{
+  display: flex;
+  justify-content: center;
+}
+
 
 /* Marigns */
 
 .m-0{
   margin: 0;
+}
+
+
+/* Materialize*/
+
+.divider {
+  height: 2px;
+}
+
+
+/* Heights and Widths */
+
+.vh-23{
+  height: 23vh;
 }
