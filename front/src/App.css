@@ -4,9 +4,13 @@
   background-color: rgba(69, 179, 156, 1);
 }
 
+
+.green-1-light {
+  background-color: rgba(70, 180, 156, 0.39);
 .green-2 {
-  background-color: rgba(69, 179, 156, .1);
-  
+    background-color: rgba(69, 179, 156, .1);
+
+
 }
 
 /* Fonts */

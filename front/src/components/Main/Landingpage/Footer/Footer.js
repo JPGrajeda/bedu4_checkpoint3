@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // components materialize
-import { Row, Col,Carousel, Footer}from "react-materialize";
+import { Row, Col, Carousel, Footer}from "react-materialize";
 import styles from './Footer.module.css';
 
 class FooterLogin  extends Component {
