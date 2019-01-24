@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import Historial from './components/Main/Dashboard/Content/Historial/Historial';
 
 // Router
 import { BrowserRouter } from "react-router-dom";
+
 
 ReactDOM.render(
 
