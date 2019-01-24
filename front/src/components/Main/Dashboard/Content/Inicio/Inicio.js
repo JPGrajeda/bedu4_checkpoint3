@@ -92,125 +92,307 @@ const Inicio = () => {
                   {/* servicios */}
                   <CardPanel className="black-text">
                     <Row>
+                      <h5 className='ft-bold'>Grupo 1</h5>
+                      <div className="divider ft-green-1"></div>
                       <Col m={3}>
                         <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className='divFlex-center' image={`./img/AWS_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
                           }
-                        >
+                        >        
                         <div className="divider"></div>
-                          <br/>
-                        <div className='divFlex-space-betwwen'>
-                          <div>
-                            sdfsdf
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
                           </div>
-                            {/* Switch  */}
-                          <div class="switch">
-                                <label>
-                                  Off
-                                  <input type="checkbox"/>
-                                  <span class="lever"></span>
-                                  On
-                                </label>
-                          </div>
-                        </div>
-
-                         
                         </Card>
                       </Col>
                       <Col m={3}>
                         <Card className='card-panel hoverable'
-                            header={ 
-                              <CardTitle className='divFlex-center' image={`./img/AT&T_logo.png`}></CardTitle>
-                            }
-                          >
-                          <div className="divider"></div>
-                            {/* Switch  */}
-                            <div class="switch">
-                              <label>
-                                Off
-                                <input type="checkbox"/>
-                                <span class="lever"></span>
-                                On
-                              </label>
-                            </div>
-                          </Card>
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
                       </Col>
                       <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 3
-                          </CardPanel>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
                       </Col>
                       <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 1
-                          </CardPanel>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col m={3}>
-                         <CardPanel className="black-text">
-                            Servicio 1
-                          </CardPanel>
-                      </Col>
-                      <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 2
-                          </CardPanel>
-                      </Col>
-                      <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 3
-                          </CardPanel>
-                      </Col>
-                      <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 1
-                          </CardPanel>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col m={3}>
-                         <CardPanel className="black-text">
-                            Servicio 1
-                          </CardPanel>
-                      </Col>
-                      <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 2
-                          </CardPanel>
-                      </Col>
-                      <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 3
-                          </CardPanel>
-                      </Col>
-                      <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 1
-                          </CardPanel>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
                       </Col>
                     </Row>
                     <Row>
+                      <h5 className='ft-bold'>Grupo 1</h5>
+                      <div className="divider ft-green-1"></div>
                       <Col m={3}>
-                         <CardPanel className="black-text">
-                            Servicio 1
-                          </CardPanel>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
                       </Col>
                       <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 2
-                          </CardPanel>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
                       </Col>
                       <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 3
-                          </CardPanel>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
                       </Col>
                       <Col m={3}>
-                          <CardPanel className="black-text">
-                            Servicio 1
-                          </CardPanel>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <h5 className='ft-bold'>Grupo 1</h5>
+                      <div className="divider ft-green-1"></div>
+                      <Col m={3}>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                      <Col m={3}>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                      <Col m={3}>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                      <Col m={3}>
+                           <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <h5 className='ft-bold'>Grupo 1</h5>
+                      <div className="divider ft-green-1"></div>
+                      <Col m={3}>
+                          <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                      <Col m={3}>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                      <Col m={3}>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                      <Col m={3}>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider"></div>
+                          {/* Switch  */}
+                        <div class="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
                       </Col>
                     </Row>
                   </CardPanel>

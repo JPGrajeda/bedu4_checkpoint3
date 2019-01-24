@@ -111,6 +111,7 @@ class Graphics extends Component {
                             <CardPanel className="green-1-light black-text">
                                 <Line 
                                         data={dataLine}
+                                        height={80}
                                 />
                             </CardPanel>
                          </Col>
