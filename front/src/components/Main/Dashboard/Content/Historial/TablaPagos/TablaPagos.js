@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { Table, Col, Row, Input } from 'react-materialize';
+import { Table, Col, Row, Button, Modal, DatePicker } from 'react-materialize';
 import './TablaPagos.css';
-import Pagar from './Botones/Pagar';
-import Agendar from './Botones/Agendar';
-import Alerta from './Botones/Alerta';
 
 
 class TablaPagos extends Component {
@@ -21,13 +18,105 @@ class TablaPagos extends Component {
                     monto: "55555",
                     limite: "666666",
                     status: "pagado"
+                },
+                {
+                    id: 2,
+                    folio: "11111" ,
+                    compañia: "22222" ,
+                    clasificación: "44444",
+                    monto: "55555",
+                    limite: "666666",
+                    status: "pagado"
+                },
+                {
+                    id: 3,
+                    folio: "11111" ,
+                    compañia: "22222" ,
+                    clasificación: "44444",
+                    monto: "55555",
+                    limite: "666666",
+                    status: "pagado"
+                },
+                {
+                    id: 4,
+                    folio: "11111" ,
+                    compañia: "22222" ,
+                    clasificación: "44444",
+                    monto: "55555",
+                    limite: "666666",
+                    status: "pagado"
+                },
+                {
+                    id: 5,
+                    folio: "11111" ,
+                    compañia: "22222" ,
+                    clasificación: "44444",
+                    monto: "55555",
+                    limite: "666666",
+                    status: "pagado"
+                },
+                {
+                    id: 6,
+                    folio: "11111" ,
+                    compañia: "22222" ,
+                    clasificación: "44444",
+                    monto: "55555",
+                    limite: "666666",
+                    status: "pagado"
+                },
+                {
+                    id: 1,
+                    folio: "11111" ,
+                    compañia: "22222" ,
+                    clasificación: "44444",
+                    monto: "55555",
+                    limite: "666666",
+                    status: "pagado"
                 }
+
             ],
-            pago: {}
+            pago: {},
+            startDate: new Date()
                
         }
 
+        this.handleChange = this.handleChange.bind(this);
+
     }
+
+    handlePagar = () => {
+        alert('clicked');
+        return false;
+        
+        
+    }
+
+    handleAlarma = () => {
+        <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleChange}
+            onSelect={this.handleSelect}
+        />
+    
+        
+    }
+
+    handleAgendar = () => {
+            <DatePicker
+              selected={this.state.startDate}
+              onChange={this.handleChange}
+              onSelect={this.handleSelect}
+            />
+        );
+        
+    }
+
+    handleChange(date) {
+        this.setState({
+          startDate: date
+        });
+    }
+     
 
     render () {
         let listPagos = this.state.pagos.map((pago) =>
@@ -40,11 +129,9 @@ class TablaPagos extends Component {
                 <td>{pago.limite}</td>
                 <td>{pago.status}</td>
                 <td>
-                    <Input s={1} type='select' label="¿Que deseas hacer?" defaultValue='2'>
-                        <option><Pagar/></option>
-                        <option><Agendar/></option>
-                        <option><Alerta/></option>
-                    </Input>
+                    <Button onClick={this.handlePagar}floating large className='red' waves='light' icon='payment'/>
+                    <Button onClick={this.handleAgendar}floating large className='green' waves='light' icon='calendar_today' />
+                    <Button onClick={this.handleAlarma}floating large className='yellow' waves='light' icon='alarm'/>
                 </td>
             </tr>
         );
