@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
 const port = 3005;
-var cors = require('cors')
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const url = 'mongodb://admin:admin123@ds119772.mlab.com:19772/checkpoint3';
 const Service = require('./models/serviceModel');
 mongoose.connect(url, { useNewUrlParser: true });
+var cors = require('cors')
   
 
 app.use(cors());
@@ -77,10 +77,10 @@ app.get("/getService/:id", async(req, res) => {
     }
 });
 
-app.get("/updateServicePrice/:id", async(req, res) => {
+app.get("/updateServicePrice/:id/:amount", async(req, res) => {
     try{
         const respuesta = await Service.findOneAndUpdate({_id: req.params.id},
-            { "price": 640},
+            { "price": req.params.amount},
             { new: true }
         ).exec();
         

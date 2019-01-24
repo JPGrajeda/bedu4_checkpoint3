@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-
+import axios from 'axios';
 // components materialize
-import {Button, Input, Row, Col, Icon, ProgressBar, CardPanel} from 'react-materialize';
+import {Button, Row, Col, Icon, ProgressBar, CardPanel} from 'react-materialize';
 
 
 
@@ -26,7 +26,7 @@ class PaymentForm extends Component {
         setInterval(() => {
             this.setState({bShowProgressBar: false})
             this.setState({bShowCard: true})
-            }, 5000)
+            }, 2000)
             
     }
      
@@ -39,8 +39,19 @@ class PaymentForm extends Component {
     HideProgressBar2 = ()=>{
         setInterval(() => {
             this.setState({bShowProgressBar2: false})
-            }, 5000)
+            }, 3000)
             
+    }
+    UpdateDB = ()=>{
+        try{
+            axios.get("http://localhost:3005/updateServicePrice/5c48ce9ae7179a5449420d71/660")
+            .then(res => {
+                console.log(res);
+              })
+        }
+        catch(error){
+            console.log(`Error  ${error}`);
+        }
     }
      
     render(){
@@ -49,10 +60,10 @@ class PaymentForm extends Component {
                 <Row>
                     <Col m={6} className="right-align"/> 
                     <Col m={6} className="right-align"> 
-                    <div class="input-field  col s9">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix" type="text" class="validate"/>
-                        <label for="icon_prefix">Número de Servicio</label>
+                    <div className="input-field  col s9">
+                        <i className="material-icons prefix">account_circle</i>
+                        <input id="icon_prefix" type="text" className="validate"/>
+                        <label htmlFor="icon_prefix">Número de Servicio</label>
                     </div>
                         
                         <br/>
@@ -102,10 +113,10 @@ class PaymentForm extends Component {
                     <Col m={4}> 
                     </Col>
                     <Col m={4}> 
-                    <Button waves='light' onClick={()=>this.ShowProgressBar2().then(()=>this.HideProgressBar2())} >Pagar Ahora<Icon right></Icon></Button>
+                    <Button waves='light' onClick={()=>this.ShowProgressBar2().then(()=>this.HideProgressBar2()).then(()=>this.UpdateDB())} >Pagar Ahora<Icon right></Icon></Button>
                     </Col>
                     <Col m={4}>
-                    <Button waves='light'>Domiciliar Servicio<Icon right></Icon></Button>
+                    <Button waves='light' >Domiciliar Servicio<Icon right></Icon></Button>
                     </Col>
                 </Row>
                 }
