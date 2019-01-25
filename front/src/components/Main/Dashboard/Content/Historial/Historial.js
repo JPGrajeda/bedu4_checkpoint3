@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TablaPagos  from './TablaPagos/TablaPagos';
 import './Historial.css';
-
+import ErrorBoundary  from './ErrorBoundary';
 
 class Historial extends Component {
 
@@ -9,7 +9,9 @@ class Historial extends Component {
         return (
             <div className="content">
                 <h1 className="titulo">Historial</h1>
-                <TablaPagos></TablaPagos>            
+                <ErrorBoundary>
+                    <TablaPagos></TablaPagos> 
+                </ErrorBoundary>           
             </div>
         )
     }

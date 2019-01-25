@@ -11,13 +11,13 @@ import Content from './Content/Content';
 const Dashboard = props => {
 
     return (
-        <>
+        <div>
             <Upbar/>
             <Sidebar/>
             <div className={styles.content}>
                 <Content {...props}/>
             </div>
-        </>
+        </div>
     )
     
 }

@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import { Table, Col, Row, Button, Modal, DatePicker } from 'react-materialize';
+import React,{ Component }  from 'react';
+import { Table, Col, Button, Modal } from 'react-materialize';
+import Calendario from './Calendario/Calendario';
+import FormatoPagar from './FormatoPagar/FormatoPagar';
 import './TablaPagos.css';
 
 
@@ -12,116 +14,107 @@ class TablaPagos extends Component {
             pagos: [
                 {
                     id: 1,
-                    folio: "11111" ,
-                    compañia: "22222" ,
-                    clasificación: "44444",
-                    monto: "55555",
-                    limite: "666666",
+                    folio: "10786108" ,
+                    compañia: "SIAPA" ,
+                    clasificación: "Servicios",
+                    monto: "$180.00",
+                    limite: "01/31/2019",
                     status: "pagado"
                 },
                 {
                     id: 2,
-                    folio: "11111" ,
-                    compañia: "22222" ,
-                    clasificación: "44444",
-                    monto: "55555",
-                    limite: "666666",
+                    folio: "7890" ,
+                    compañia: "Banamex" ,
+                    clasificación: "Tarjetas Bancaria",
+                    monto: "$380.00",
+                    limite: "01/15/2019",
                     status: "pagado"
                 },
                 {
                     id: 3,
-                    folio: "11111" ,
-                    compañia: "22222" ,
-                    clasificación: "44444",
-                    monto: "55555",
-                    limite: "666666",
+                    folio: "1234" ,
+                    compañia: "SEARS" ,
+                    clasificación: "Tarjetas Departamentales",
+                    monto: "$1390.00",
+                    limite: "01/10/2019",
                     status: "pagado"
                 },
                 {
                     id: 4,
-                    folio: "11111" ,
-                    compañia: "22222" ,
-                    clasificación: "44444",
-                    monto: "55555",
-                    limite: "666666",
+                    folio: "5459" ,
+                    compañia: "VIVAerobus" ,
+                    clasificación: "Tarjetas Bancarias",
+                    monto: "$830.00",
+                    limite: "01/08/2019",
                     status: "pagado"
                 },
                 {
                     id: 5,
-                    folio: "11111" ,
-                    compañia: "22222" ,
-                    clasificación: "44444",
-                    monto: "55555",
-                    limite: "666666",
+                    folio: "1245780" ,
+                    compañia: "Zgas" ,
+                    clasificación: "Servicios",
+                    monto: "$400.00",
+                    limite: "01/3/2019",
                     status: "pagado"
                 },
                 {
                     id: 6,
-                    folio: "11111" ,
-                    compañia: "22222" ,
-                    clasificación: "44444",
-                    monto: "55555",
-                    limite: "666666",
+                    folio: "24DA17A010130876" ,
+                    compañia: "CFE" ,
+                    clasificación: "Servicios",
+                    monto: "$290.00",
+                    limite: "12/31/2018",
                     status: "pagado"
                 },
                 {
-                    id: 1,
-                    folio: "11111" ,
-                    compañia: "22222" ,
-                    clasificación: "44444",
-                    monto: "55555",
-                    limite: "666666",
+                    id: 7,
+                    folio: "027-081748" ,
+                    compañia: "MegaCable" ,
+                    clasificación: "Servicios",
+                    monto: "$699.00",
+                    limite: "12/24/2018",
                     status: "pagado"
-                }
+                },
+                {
+                    id: 8,
+                    folio: "1621" ,
+                    compañia: "Liverpool" ,
+                    clasificación: "Tarjetas Departamentales",
+                    monto: "$167.00",
+                    limite: "12/29/2018",
+                    status: "pagado"
+                },
+                
+                {
+                    id: 9,
+                    folio: "00649777" ,
+                    compañia: "Telcel" ,
+                    clasificación: "Servicios",
+                    monto: "$425.00",
+                    limite: "12/08/18",
+                    status: "pagado"
+                },
+               
 
             ],
             pago: {},
-            startDate: new Date()
                
         }
 
-        this.handleChange = this.handleChange.bind(this);
-
     }
 
-    handlePagar = () => {
-        alert('clicked');
-        return false;
-        
-        
-    }
-
-    handleAlarma = () => {
-        <DatePicker
-            selected={this.state.startDate}
-            onChange={this.handleChange}
-            onSelect={this.handleSelect}
-        />
     
-        
-    }
 
-    handleAgendar = () => {
-            <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleChange}
-              onSelect={this.handleSelect}
-            />
-        );
-        
+    renderCalendario() {
+        return (
+            <div>
+                <Calendario />
+            </div>
+        )
     }
-
-    handleChange(date) {
-        this.setState({
-          startDate: date
-        });
-    }
-     
-
     render () {
-        let listPagos = this.state.pagos.map((pago) =>
-            <tr key={pago.toString()}>
-                <td>{pago.id}</td>
+        let listPagos = this.state.pagos.map((pago,index) =>
+            <tr key={index}>
                 <td>{pago.folio}</td>
                 <td>{pago.compañia}</td>
                 <td>{pago.clasificación}</td>
@@ -129,9 +122,20 @@ class TablaPagos extends Component {
                 <td>{pago.limite}</td>
                 <td>{pago.status}</td>
                 <td>
-                    <Button onClick={this.handlePagar}floating large className='red' waves='light' icon='payment'/>
-                    <Button onClick={this.handleAgendar}floating large className='green' waves='light' icon='calendar_today' />
-                    <Button onClick={this.handleAlarma}floating large className='yellow' waves='light' icon='alarm'/>
+                    <Modal header='Pagar saldo' fixedFooter
+                        trigger={<Button floating large className='red' waves='light' icon='payment'></Button>}>
+                        <FormatoPagar />
+                    </Modal> 
+                    <Modal header='Agenda tu proximo pago' fixedFooter
+                        trigger={<Button onClick={this.renderCalendario} floating large className='green' waves='light' icon='calendar_today'></Button>}> 
+                        <Calendario />
+                        
+                    </Modal>
+                    <Modal header='Programa alerta de proximo pago' fixedFooter
+                        trigger={<Button onClick={this.renderCalendario} floating large className='yellow' waves='light' icon='alarm'></Button>}>
+                        <Calendario />
+                        
+                    </Modal> 
                 </td>
             </tr>
         );
@@ -142,7 +146,6 @@ class TablaPagos extends Component {
                 <Table>
                     <thead>
                         <tr className="conceptos">
-                            <th data-field="id"><Col s={1}>ID</Col></th>
                             <th data-field="folio"><Col s={1}>Numero de cuenta</Col></th>
                             <th data-field="compañia"><Col s={1}>Compañia</Col></th>
                             <th data-field="clasificación"><Col s={1}>Clasificacion de Pagos</Col></th>
@@ -152,7 +155,7 @@ class TablaPagos extends Component {
                             <th data-field="acciones"><Col s={1}>Acciones</Col></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody key={this.state.index}>
                         {listPagos}   
                     </tbody> 
                     
