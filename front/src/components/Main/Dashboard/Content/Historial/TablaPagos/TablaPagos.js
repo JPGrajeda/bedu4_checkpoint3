@@ -20,7 +20,8 @@ class TablaPagos extends Component {
                     clasificación: "Servicios",
                     monto: "$180.00",
                     limite: "01/31/2019",
-                    status: "pagado"
+                    status: "pagado",
+                    selectedAlarm: "NoAlarmado"
                 },
                 {
                     id: 2,
@@ -29,7 +30,8 @@ class TablaPagos extends Component {
                     clasificación: "Tarjetas Bancaria",
                     monto: "$380.00",
                     limite: "01/15/2019",
-                    status: "pagado"
+                    status: "pagado",
+                    selectedAlarm: "NoAlarmado"
                 },
                 {
                     id: 3,
@@ -38,7 +40,8 @@ class TablaPagos extends Component {
                     clasificación: "Tarjetas Departamentales",
                     monto: "$1390.00",
                     limite: "01/10/2019",
-                    status: "pagado"
+                    status: "pagado",
+                    selectedAlarm: "NoAlarmado"
                 },
                 {
                     id: 4,
@@ -47,7 +50,8 @@ class TablaPagos extends Component {
                     clasificación: "Tarjetas Bancarias",
                     monto: "$830.00",
                     limite: "01/08/2019",
-                    status: "pagado"
+                    status: "pagado",
+                    selectedAlarm: "NoAlarmado"
                 },
                 {
                     id: 5,
@@ -56,7 +60,8 @@ class TablaPagos extends Component {
                     clasificación: "Servicios",
                     monto: "$400.00",
                     limite: "01/3/2019",
-                    status: "pagado"
+                    status: "pagado",
+                    selectedAlarm: "NoAlarmado"
                 },
                 {
                     id: 6,
@@ -65,7 +70,8 @@ class TablaPagos extends Component {
                     clasificación: "Servicios",
                     monto: "$290.00",
                     limite: "12/31/2018",
-                    status: "pagado"
+                    status: "pagado",
+                    selectedAlarm: "NoAlarmado"
                 },
                 {
                     id: 7,
@@ -74,7 +80,8 @@ class TablaPagos extends Component {
                     clasificación: "Servicios",
                     monto: "$699.00",
                     limite: "12/24/2018",
-                    status: "pagado"
+                    status: "pagado",
+                    selectedAlarm: "NoAlarmado"
                 },
                 {
                     id: 8,
@@ -83,7 +90,8 @@ class TablaPagos extends Component {
                     clasificación: "Tarjetas Departamentales",
                     monto: "$167.00",
                     limite: "12/29/2018",
-                    status: "pagado"
+                    status: "pagado",
+                    selectedAlarm: "NoAlarmado"
                 },
                 
                 {
@@ -93,7 +101,8 @@ class TablaPagos extends Component {
                     clasificación: "Servicios",
                     monto: "$425.00",
                     limite: "12/08/18",
-                    status: "pagado"
+                    status: "pagado",
+                    selectedAlarm: "NoAlarmado"
                 },
                
 
@@ -103,6 +112,8 @@ class TablaPagos extends Component {
             
                
         }
+        
+    
     }
 
     renderCalendario() {
@@ -129,17 +140,30 @@ class TablaPagos extends Component {
                     </Modal> 
                     <Modal header='Agenda tu proximo pago' fixedFooter
                         trigger={<Button onClick={this.renderCalendario} floating large id='green' waves='light' icon='calendar_today'></Button>}> 
-                        <Calendario startDate={startDate} OnStartDateChange={this.handleStartDateChange}/>
+                        <Calendario startDate={startDate} startDateList={filteredStartDateList} OnStartDateChange={this.handleStartDateChange}/>
                         
                     </Modal>
                     <Modal header='Programa alerta de proximo pago' fixedFooter
                         trigger={<Button onClick={this.renderCalendario} floating large id='yellow' waves='light' icon='alarm'></Button>}>
-                        <Calendario startDate={startDate} OnStartDateChange={this.handleStartDateChange}  />
+                        <Calendario startDate={startDate} startDateList={filteredStartDateList} OnStartDateChange={this.handleStartDateChange}  />
                         
                     </Modal> 
                 </td>
             </tr>
         );
+
+        
+        let filteredStartDateList = [];
+        
+        switch (this.state.selectedAlarm) {
+            case 'alarmado':
+                filteredStartDateList = this.state.startDateList.filter(startDate => startDate.alarmado);
+                break;
+            default: {
+                filteredStartDateList = this.state.todoList;
+            } 
+        }
+        
   
         return (
             <div>
