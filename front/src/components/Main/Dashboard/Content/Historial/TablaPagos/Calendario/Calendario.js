@@ -43,8 +43,8 @@ class Calendario extends Component {
                     />
                     <p>{this.props.agendar}</p>
                     <div>
-                        <Button onClick={() => {this.props.filterChange("NoAlarmado")}}>No alarmar</Button>
-                        <Button onClick={() => {this.props.filterChange("Alarmado")}}>Alarmar</Button>
+                        <Button filterChange={()=>{this.props.filterChange("NoAlarmado")}}>No alarmar</Button>
+                        <Button filterChange={()=>{this.props.filterChange("Alarmado")}}>Alarmar</Button>
                     </div>
                 </Row>
                
