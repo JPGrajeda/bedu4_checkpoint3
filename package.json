@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-datepicker": "^2.0.0",
+    "react-day-picker": "^7.2.4",
+    "react-materialize": "^2.6.0",
+    "react-router-dom": "^4.4.0-beta.6",
+    "reminders-react": "^1.1.5"
+  }
+}

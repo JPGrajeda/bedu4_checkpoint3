@@ -3,6 +3,7 @@ import { Table, Col, Button, Modal } from 'react-materialize';
 import Calendario from './Calendario/Calendario';
 import FormatoPagar from './FormatoPagar/FormatoPagar';
 import './TablaPagos.css';
+import  Futer from '../Futer/Futer';
 
 
 class TablaPagos extends Component {
@@ -98,12 +99,11 @@ class TablaPagos extends Component {
 
             ],
             pago: {},
+            
+            
                
         }
-
     }
-
-    
 
     renderCalendario() {
         return (
@@ -113,8 +113,9 @@ class TablaPagos extends Component {
         )
     }
     render () {
+        const { startDate } = this.state
         let listPagos = this.state.pagos.map((pago,index) =>
-            <tr key={index}>
+            <tr key={index} className="registros" id="registros">
                 <td>{pago.folio}</td>
                 <td>{pago.compañia}</td>
                 <td>{pago.clasificación}</td>
@@ -123,29 +124,28 @@ class TablaPagos extends Component {
                 <td>{pago.status}</td>
                 <td>
                     <Modal header='Pagar saldo' fixedFooter
-                        trigger={<Button floating large className='red' waves='light' icon='payment'></Button>}>
+                        trigger={<Button floating large id='red' waves='light' icon='payment'></Button>}>
                         <FormatoPagar />
                     </Modal> 
                     <Modal header='Agenda tu proximo pago' fixedFooter
-                        trigger={<Button onClick={this.renderCalendario} floating large className='green' waves='light' icon='calendar_today'></Button>}> 
-                        <Calendario />
+                        trigger={<Button onClick={this.renderCalendario} floating large id='green' waves='light' icon='calendar_today'></Button>}> 
+                        <Calendario startDate={startDate} OnStartDateChange={this.handleStartDateChange}/>
                         
                     </Modal>
                     <Modal header='Programa alerta de proximo pago' fixedFooter
-                        trigger={<Button onClick={this.renderCalendario} floating large className='yellow' waves='light' icon='alarm'></Button>}>
-                        <Calendario />
+                        trigger={<Button onClick={this.renderCalendario} floating large id='yellow' waves='light' icon='alarm'></Button>}>
+                        <Calendario startDate={startDate} OnStartDateChange={this.handleStartDateChange}  />
                         
                     </Modal> 
                 </td>
             </tr>
         );
   
-
         return (
             <div>
                 <Table>
                     <thead>
-                        <tr className="conceptos">
+                        <tr className="conceptos" >
                             <th data-field="folio"><Col s={1}>Numero de cuenta</Col></th>
                             <th data-field="compañia"><Col s={1}>Compañia</Col></th>
                             <th data-field="clasificación"><Col s={1}>Clasificacion de Pagos</Col></th>
@@ -155,7 +155,7 @@ class TablaPagos extends Component {
                             <th data-field="acciones"><Col s={1}>Acciones</Col></th>
                         </tr>
                     </thead>
-                    <tbody key={this.state.index}>
+                    <tbody key={this.state.index} >
                         {listPagos}   
                     </tbody> 
                     

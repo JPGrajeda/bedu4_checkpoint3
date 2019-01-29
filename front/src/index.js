@@ -12,7 +12,7 @@ import { BrowserRouter } from "react-router-dom";
 ReactDOM.render(
 
     <BrowserRouter>
-        <App /> 
+        <Historial /> 
     </BrowserRouter>
     ,
     document.getElementById('root'))
