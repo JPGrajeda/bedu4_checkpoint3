@@ -56,8 +56,18 @@ class Historial extends Component {
             <div className="content">
                 <h1 className="titulo">Historial</h1>
                 <ErrorBoundary>
-                    <TablaPagos agendar ={alarmar} filterChange={this.handleFilterChange} startDate={startDate} OnStartDateChange={this.handleStartDateChange}></TablaPagos>
-                    <Futer  filterChange={this.handleFilterChange.bind(this)} alarmsChange={this.handleStartDateChange} startDateList={filteredStartDateList} OnStartDateChange={this.handleStartDateChange}  />
+                    <TablaPagos 
+                        agendar ={alarmar} 
+                        filterChange={this.handleFilterChange} 
+                        startDate={startDate} 
+                        alarmsChange={this.handleStartDateChange}></TablaPagos>
+                    <Futer 
+                        {...this.props} 
+                        agendar ={alarmar} 
+                        filterChange={this.handleFilterChange.bind(this)} 
+                        alarmsChange={this.handleStartDateChange} 
+                        startDateList={filteredStartDateList} 
+                          />
                 </ErrorBoundary>           
             </div>
         )

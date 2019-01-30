@@ -9,10 +9,13 @@ import Historial from './components/Main/Dashboard/Content/Historial/Historial';
 import { BrowserRouter } from "react-router-dom";
 
 
+
 ReactDOM.render(
 
     <BrowserRouter>
-        <Historial /> 
+       
+        <Historial/>
+        
     </BrowserRouter>
     ,
     document.getElementById('root'))

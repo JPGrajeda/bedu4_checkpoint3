@@ -12,18 +12,23 @@ class Futer extends Component {
     render () {
         
         if(this.props.startDate) {
-        let startDateList = this.props.startDate.map((startDate, index) => {
+        let alarmList = this.props.startDate.map((startDate, index) => {
             return (
                 <li key={index}>
-                    <Checkbox onChange={(e) => this.props.alarmsChange(e, index)} checked={startDate.alarmado}> </Checkbox>
-                    {startDate.pago}
+                    <Checkbox 
+                        onChange={(e) => this.props.alarmsChange(e, index)}
+                        onChange={(e) => this.handleStartDateChange(e)} 
+                        value={this.state.startDate}checked={startDate.alarmado}> </Checkbox>
+                    
                 </li>
             )
         })}
         return (
             <Footer>
                 <div className="footer-container">
-                    <ul>{this.startDateList} </ul>
+                    <ul>
+                       {this.alarmList} 
+                    </ul>
                 </div>
             </Footer>
         )
