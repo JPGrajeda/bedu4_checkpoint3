@@ -19,7 +19,7 @@ class TablaPagos extends Component {
                     compañia: "SIAPA" ,
                     clasificación: "Servicios",
                     monto: "$180.00",
-                    limite: "01/31/2019",
+                    date: "31/01/2019",
                     status: "pagado",
                     selectedAlarm: "NoAlarmado",
                     alarmado: false
@@ -30,7 +30,7 @@ class TablaPagos extends Component {
                     compañia: "Banamex" ,
                     clasificación: "Tarjetas Bancaria",
                     monto: "$380.00",
-                    limite: "01/15/2019",
+                    date: "15/01/2019",
                     status: "pagado",
                     selectedAlarm: "NoAlarmado",
                     alarmado: false
@@ -41,7 +41,7 @@ class TablaPagos extends Component {
                     compañia: "SEARS" ,
                     clasificación: "Tarjetas Departamentales",
                     monto: "$1390.00",
-                    limite: "01/10/2019",
+                    date: "10/01/2019",
                     status: "pagado",
                     selectedAlarm: "NoAlarmado",
                     alarmado: false
@@ -52,7 +52,7 @@ class TablaPagos extends Component {
                     compañia: "VIVAerobus" ,
                     clasificación: "Tarjetas Bancarias",
                     monto: "$830.00",
-                    limite: "01/08/2019",
+                    date: "08/01/2019",
                     status: "pagado",
                     selectedAlarm: "NoAlarmado",
                     alarmado: false
@@ -63,7 +63,7 @@ class TablaPagos extends Component {
                     compañia: "Zgas" ,
                     clasificación: "Servicios",
                     monto: "$400.00",
-                    limite: "01/3/2019",
+                    date: "03/01/2019",
                     status: "pagado",
                     selectedAlarm: "NoAlarmado",
                     alarmado: false
@@ -74,7 +74,7 @@ class TablaPagos extends Component {
                     compañia: "CFE" ,
                     clasificación: "Servicios",
                     monto: "$290.00",
-                    limite: "12/31/2018",
+                    date: "31/12/2018",
                     status: "pagado",
                     selectedAlarm: "NoAlarmado",
                     alarmado: false
@@ -85,7 +85,7 @@ class TablaPagos extends Component {
                     compañia: "MegaCable" ,
                     clasificación: "Servicios",
                     monto: "$699.00",
-                    limite: "12/24/2018",
+                    date: "24/12/2018",
                     status: "pagado",
                     selectedAlarm: "NoAlarmado",
                     alarmado: false
@@ -96,7 +96,7 @@ class TablaPagos extends Component {
                     compañia: "Liverpool" ,
                     clasificación: "Tarjetas Departamentales",
                     monto: "$167.00",
-                    limite: "12/29/2018",
+                    date: "29/12/2018",
                     status: "pagado",
                     selectedAlarm: "NoAlarmado",
                     alarmado: false
@@ -108,7 +108,7 @@ class TablaPagos extends Component {
                     compañia: "Telcel" ,
                     clasificación: "Servicios",
                     monto: "$425.00",
-                    limite: "12/08/18",
+                    date: "08/12/18",
                     status: "pagado",
                     selectedAlarm: "NoAlarmado",
                     alarmado: false
@@ -116,7 +116,7 @@ class TablaPagos extends Component {
                
 
             ],
-            pago: {},
+            pago: {}
             
             
                
@@ -125,16 +125,22 @@ class TablaPagos extends Component {
     
     }
 
-    renderCalendario() {
-        return (
-            <div>
-                <Calendario />
-            </div>
-        )
-    }
     render () {
         
         let agendan = this.state.pagos.filter(item => !item.alarmado).length;
+        
+        let filteredPago = [];
+        switch (this.state.selectedFilter) {
+            case "alarmado":
+                filteredPago = this.state.pago.filter(item => item.done)
+                break;
+            case "pending":
+                filteredPago = this.state.pago.filter(item => !item.done)
+                break;
+            default:
+                filteredPago = this.state.pago;
+        }
+        
         const { startDate } = this.state
         let listPagos = this.state.pagos.map((pago,index) =>
             <tr key={index} className="registros" id="registros">
@@ -142,40 +148,41 @@ class TablaPagos extends Component {
                 <td>{pago.compañia}</td>
                 <td>{pago.clasificación}</td>
                 <td>{pago.monto}</td>
-                <td>{pago.limite}</td>
+                <td>{pago.date}</td>
                 <td>{pago.status}</td>
                 <td>
                     <Modal header='Pagar saldo' fixedFooter
-                        trigger={<Button floating tiny style={{botton: '5px', top:'-5px'}} alarmar={agendan}  id='red' waves='light' icon='payment'></Button>}>
+                        trigger={<Button floating tiny='true' style={{botton: '5px', top:'-5px'}} alarmar={agendan}  id='red' waves='light' icon='payment'></Button>}>
                         <FormatoPagar />
                     </Modal> 
-                    <Modal header='Agenda tu proximo pago' fixedFooter
-                        trigger={<Button onClick={this.renderCalendario} floating tiny style={{botton: '5px'}} alarmar={agendan}  id='green' waves='light' icon='calendar_today'></Button>}> 
-                        <Calendario startDate={startDate} startDateList={filteredStartDateList} OnStartDateChange={this.handleStartDateChange}/>
+                    <Modal 
+                        header='Agenda tu proximo pago' fixedFooter alarmar={agendan}pagos={filteredPago} 
+                        trigger={<Button 
+                                onClick={this.renderCalendario} 
+                                floating tiny='true' 
+                                style={{botton: '5px'}} 
+                                pagos={filteredPago} 
+                                alarmar={agendan}  
+                                id='green' 
+                                waves='light' 
+                                icon='calendar_today'
+                            >
+                            </Button>}> 
+                            <Calendario 
+                                
+                            />
                         
                     </Modal>
                     <Modal header='Programa alerta de proximo pago' fixedFooter
-                        trigger={<Button onClick={this.renderCalendario} floating tiny  style={{top:'5px'}} alarmar={agendan} id='yellow' waves='light'  icon='alarm'></Button>}>
-                        <Calendario startDate={startDate} startDateList={filteredStartDateList} OnStartDateChange={this.handleStartDateChange}  />
+                        trigger={<Button onClick={this.renderCalendario} floating tiny='true'  style={{top:'5px'}} pagos={filteredPago} alarmar={agendan} id='yellow' waves='light'  icon='alarm'></Button>}>
+                        <Calendario 
+                    />
                         
                     </Modal> 
                 </td>
             </tr>
         );
-
-        
-        let filteredStartDateList = [];
-        
-        switch (this.state.selectedAlarm) {
-            case 'alarmado':
-                filteredStartDateList = this.state.startDateList.filter(startDate => startDate.alarmado);
-                break;
-            default: {
-                filteredStartDateList = this.state.todoList;
-            } 
-        }
-        
-  
+ 
         return (
             <div>
                 <Table>

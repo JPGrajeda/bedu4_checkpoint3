@@ -7,69 +7,55 @@ class Calendario extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: new Date()
-        }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+            date:"",
+      
+            selectDate:""
     }
+}
 
-    handleChange(date) {
-        this.setState({
-            startDate: date
-        });
-    }
+
+
 
     handleSubmit(e) {
         e.preventDefault();
-        let main = this.state.startDate
+        let main = this.state.date
         console.log(main.format('L'));
       }
-    
-    /* handleAddStartDate() {
-        if (!this.state.startDate.length) return;
-        this.setState({ // Se utiliza setState, porque no se puede mutar state directamente
-            startDateList: this.state.startDateList.concat({ // Se usa una concatenación, para tener un nuevo arreglo (valores pasados + valor nuevo)
-                alarmado: false 
-            }),
-            startDate: ""
-        
-        })
-
-    } */
-    handleClickAlarm() {
-        alert('Has programado tu alarma');
-        return false;
-    }
-    handleClickNoAlarm() {
-        alert('Alarma cancelada');
-        return false;
-    }
-
+ 
     render () {
-        const { startDate, onStartDateChange, ...rest} = this.props;
+    
         return (
             <div>
                 <Row>
                     <Input 
-                        name='startDate' 
+                        name='on' 
                         type='date' 
-                        onClick={this.handleChange} 
-                        onChange={onStartDateChange }
+                        // onClick={this.handleChange} 
                         onSubmit={ this.handleSubmit }
+                       
                         label='Haz click para calendarizar'
-                        startdate={startDate}
+                        
+                        
                     />
-                    <p>{this.props.agendar}</p>
+                    <p>{this.props.alarmar}</p>
                     <div>
-                        <Button {...rest}   
-                            filterChange={()=>{this.props.filterChange("NoAlarmado")}}
-                            onClick={()=>this.handleClickNoAlarm()}> 
-                            No alarmar
+                        <Button onClick={() => {
+                                window.Materialize.toast(`I am a toast!` + this.date, 10000)
+                            } 
+                        }>
+                            Alarmar
                         </Button>
-                        <Button {...rest}    
-                            onClick={()=>this.handleClickAlarm()} 
-                            filterChange={()=>{this.props.filterChange("Alarmado")}}>
-                            Alarmar</Button>
+                        <Button onClick={() => {
+                                const toast = document.querySelector('#toast-container>.toast');
+                                if (toast) {
+                                    toast.remove();
+                                }
+                            }
+                        }>
+                            Cancelar alarma
+                        </Button>
+
+                           
                     </div>
                 </Row>
                
