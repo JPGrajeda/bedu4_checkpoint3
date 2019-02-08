@@ -22,6 +22,10 @@
   font-weight: 600;
 }
 
+.ft-20{
+  font-size: 20px;
+}
+
 .ft-green-1{
   color: rgba(69, 179, 156, 1);
 }
@@ -56,6 +60,23 @@
   margin-top: 20px;
 }
 
+.mtb-20{
+  margin: 20px 0 20px 0;
+}
+
+/* Paddings*/
+.pd-tb-20{
+  padding: 20px 0 20px 0;
+}
+
+.pd-tb-40{
+  padding: 40px 0 40px 0;
+}
+
+.pd-t-20{
+  padding-top: 20px;
+}
+
 /* Materialize*/
 
 .divider {
@@ -68,4 +89,38 @@
 
 .vh-23{
   height: 23vh;
+}
+
+
+/* pils login */
+.tabs .tab a {
+  color: rgba(70, 180, 156, 0.39) !important;
+  /*Custom Text Color*/
+}
+
+.tabs .tab a:hover {
+  color:rgba(70, 180, 156, 0.39);
+  /*Custom Color On Hover*/
+}
+
+.tabs .tab a.active {
+  color:rgba(69, 179, 156, 1) !important;
+  /*Custom Text Color While Active*/
+  background-color: rgba(70, 180, 156, 0.1);
+  /*Custom Background Color While Active*/
+}
+
+.tabs .indicator {
+  background-color:rgba(69, 179, 156, 1)
+  /*Custom Color Of Indicator*/
+}
+
+.tabs{
+  border-radius: 5px 5px 0 0;
+}
+
+#sing_up, #sing_in{
+  height: 319px;
+  max-height: 319px;
+  border-radius: 0 0 5px 5px;
 }

@@ -11,8 +11,8 @@ class NavBar  extends Component {
         return (
                 <Navbar 
                     brand={
-                        <div className= "valign-wrapper">
-                            <img src='./img/Wallet1.png' className={styles.brand}  alt='Logo'></img>
+                        <div className="valign-wrapper">
+                            <img src='./img/Wallet4.png' className={styles.brand}  alt='Logo'></img>
                             <span className='txtCoiny NavCenter'>WatchWallet</span>
                         </div>
                     } 
@@ -21,8 +21,8 @@ class NavBar  extends Component {
                     right 
                     fixed
                 >
-                    <NavItem className=''>Sign in</NavItem>
-                    <NavItem className=''>Sign up</NavItem>
+                    {/* <NavItem className='asdasd'>Sign in</NavItem>
+                    <NavItem className=''>Sign up</NavItem> */}
                 </Navbar>
         )
 
