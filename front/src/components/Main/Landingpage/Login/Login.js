@@ -58,9 +58,10 @@ class Login extends Component {
                 <div className='container'>
                     <Row className= {styles.gridTemplate }>
                         <Col l={6} m={6} s={12}>
-                            <h1 className='txtCoiny white-text'>WatchWallet</h1>
-                            <p className='white-text ft-20'>
-                                Texto de prueba
+                            <h1 className='txtCoiny white-text'>We take care of it</h1>
+                            <p className='white-text ft-25 ft-bold'>  
+                                WatchWallet is an electronic wallet platform created to take care of your money. 
+                                You can manage the most used services, graph and make decisions based on history.
                             </p>
                         </Col>
                         <Col l={6} m={6} s={12} className='divFlex-center'>

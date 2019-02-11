@@ -22,8 +22,16 @@
   font-weight: 600;
 }
 
+.txt-center{
+  text-align: center;
+}
+
 .ft-20{
   font-size: 20px;
+}
+
+.ft-25{
+  font-size: 25px;
 }
 
 .ft-green-1{
@@ -60,8 +68,16 @@
   margin-top: 20px;
 }
 
+.mt-40{
+  margin-top: 40px;
+}
+
 .mtb-20{
   margin: 20px 0 20px 0;
+}
+
+.mb-0{
+  margin-bottom: 0;
 }
 
 /* Paddings*/
@@ -75,6 +91,10 @@
 
 .pd-t-20{
   padding-top: 20px;
+}
+
+.pd-t-40{
+  padding-top: 40px;
 }
 
 /* Materialize*/

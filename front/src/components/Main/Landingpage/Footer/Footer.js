@@ -9,27 +9,27 @@ class FooterLogin  extends Component {
     render(){
 
         return (
-            <div className='pd-tb-40'>
+            <div className='pd-t-40'>
                 <Row className="container"> 
                     <div className= {styles.txtCoinyFooter} >
                         <h4>Why you will love Watch Wallet?</h4>
                         <hr></hr>
                     </div>
-                    <Col l={4} m={4} s={12}>
+                    <Col l={4} m={4} s={12} className='mt-40'>
                         <div className= "center">
                             <i className="large material-icons ">touch_app</i>
                             <h5 className= "black-text"> Anywhere and Anytime</h5>
                             <p></p>
                         </div>
                     </Col >
-                    <Col l={4} m={4} s={12}>
+                    <Col l={4} m={4} s={12} className='mt-40'>
                         <div className= "center">
                             <i className="large material-icons ">payment</i>
                             <h5 className= "black-text">Your pay always will be on time </h5>
                             <p></p>
                         </div>
                     </Col>
-                    <Col l={4} m={4} s={12}>
+                    <Col l={4} m={4} s={12} className='mt-40'>
                         <div className= "center">
                              <i className="large material-icons">security</i>
                              <h5 className= "black-text">Reliable and Safe</h5>
@@ -63,13 +63,13 @@ class FooterLogin  extends Component {
                         ]} />
                         </div>  
                 </Row>
-                <Row>
+                <Row className='mb-0'>
                  <Footer
-                    copyrights="© 2019 Watch Wallet Latam - A Mountain Nazca-Company. Todos los derechos reservados.Términos y Condiciones Política de privacidad"
+                     copyrights='© 2019 Watch Wallet &nbsp; | &nbsp; Todos los derechos reservados &nbsp; | &nbsp; Términos y Condiciones &nbsp; | &nbsp; Política de privacidad'
                      className='blue-grey darken-4' >
                         
-                    <h5 className="white-text">Empresas</h5>
-                    <p className="grey-text text-lighten-4">contactos</p>
+                    <h5 className="txtCoiny white-text">WatchWallet</h5>
+                    {/* <p className="grey-text text-lighten-4">contactos</p> */}
                  </Footer>
                 </Row>
             </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // components materialize
-import {Navbar, NavItem} from 'react-materialize';
+import {Navbar} from 'react-materialize';
 import styles from './Navbar.module.css';
 
 class NavBar  extends Component {
