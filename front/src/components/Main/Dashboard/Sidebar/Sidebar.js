@@ -19,8 +19,6 @@ class Sidebar extends Component {
         })
     }
 
-    
-
     render(){
 
 
@@ -56,7 +54,6 @@ class Sidebar extends Component {
             </>
         );
     }
-
 }
 
 export default Sidebar;

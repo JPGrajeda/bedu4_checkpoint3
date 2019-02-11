@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // components materialize
-import { Row, Col, Carousel, Footer}from "react-materialize";
+import { Row, Col,Carousel, Footer}from "react-materialize";
 import styles from './Footer.module.css';
 
 class FooterLogin  extends Component {
@@ -64,6 +64,7 @@ class FooterLogin  extends Component {
                         </div>  
                 </Row>
                 <Row className='mb-0'>
+
                  <Footer
                      copyrights='© 2019 Watch Wallet &nbsp; | &nbsp; Todos los derechos reservados &nbsp; | &nbsp; Términos y Condiciones &nbsp; | &nbsp; Política de privacidad'
                      className='blue-grey darken-4' >

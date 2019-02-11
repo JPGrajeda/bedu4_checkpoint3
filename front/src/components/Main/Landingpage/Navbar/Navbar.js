@@ -23,6 +23,7 @@ class NavBar  extends Component {
                 >
                     {/* <NavItem className='asdasd'>Sign in</NavItem>
                     <NavItem className=''>Sign up</NavItem> */}
+
                 </Navbar>
         )
 
