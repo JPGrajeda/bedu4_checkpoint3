@@ -24,11 +24,11 @@ class Sidebar extends Component {
 
         var isSelected = this.state.isSelected;
         var style = {
-            'background-color': ''
+            'backgroundColor': '#ccc'
         };
         if (isSelected) {
             style = {
-                'background-color': '#ccc'
+                'backgroundColor': '#ccc'
             };
         }
 

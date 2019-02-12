@@ -21,32 +21,47 @@ const Inicio = () => {
                     <CardPanel className="black-text">
                       <h5>Saldo Pendiente</h5>
                       <div className="divider green-1-light"></div>
+                      <div className='divFlex-center'>
+                        <div>
+                          <h5> $ asdasd  </h5>
+                        </div>
+                      </div>
                     </CardPanel>
                   </Col>
                   <Col m={3}>
                     <CardPanel className="black-text">
                       <h5>Saldo Disponible</h5>
                       <div className="divider green-1-light"></div>
+                      <div className='divFlex-center'>
+                        <div>
+                          <h5> 25 de febrero  </h5>
+                        </div>
+                      </div>
                     </CardPanel>
                   </Col>
                   <Col m={3}>
                     <CardPanel className="black-text">
                       <h5>Fecha Corte</h5>
                       <div className="divider green-1-light"></div>
+                      <div className='divFlex-center'>
+                        <div>
+                          <h5> $ asdasdasd  </h5>
+                        </div>
+                      </div>
                     </CardPanel>
                   </Col>
                   <Col m={3}>
                     <CardPanel className="black-text">
                       <h5>Card</h5>
                       <div className="divider divider green-1-light"></div>
-                      <div className='divFlex-space-betwwen'>
+                      <div className='divFlex-space-betwwen divFlex-ai-center'>
                         <div>
-                          <Icon medium left>credit_card</Icon>
+                          <Icon small left>credit_card</Icon>
                         </div>
                         <div>
                           <h5> **** **** **** 1234  </h5>
                         </div>
-                    </div>
+                      </div>
                     </CardPanel>
                   </Col>
                 </Row>
@@ -92,22 +107,22 @@ const Inicio = () => {
                   {/* servicios */}
                   <CardPanel className="black-text">
                     <Row>
-                      <h5 className='ft-bold'>Grupo 1</h5>
+                      <h5 className='ft-bold'>Basic Services</h5>
                       <div className="divider green-1-light"></div>
                       <br/>
                       <Col m={3}>
                         <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/CFE_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -116,16 +131,16 @@ const Inicio = () => {
                       <Col m={3}>
                         <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/SIAPA_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -134,16 +149,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/TELMEX_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -152,16 +167,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/ZETA_logo.svg`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -169,22 +184,22 @@ const Inicio = () => {
                       </Col>
                     </Row>
                     <Row>
-                      <h5 className='ft-bold'>Grupo 2</h5>
+                      <h5 className='ft-bold'>Streaming</h5>
                       <div className="divider green-1-light"></div>
                       <br/>
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/NETFLIX_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -193,16 +208,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/PRIME_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -211,16 +226,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/YOUTUBE_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -229,16 +244,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hover2able'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/SPOTIFY_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -246,22 +261,22 @@ const Inicio = () => {
                       </Col>
                     </Row>
                     <Row>
-                      <h5 className='ft-bold'>Grupo 3</h5>
+                      <h5 className='ft-bold'>Games</h5>
                       <div className="divider green-1-light"></div>
                       <br/>
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/STEAM_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -270,16 +285,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/ORIGIN_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -288,16 +303,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hover2able'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/SWITCH_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -306,16 +321,16 @@ const Inicio = () => {
                       <Col m={3}>
                            <Card className='card-panel 2hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/PLAYSTATION_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -323,22 +338,22 @@ const Inicio = () => {
                       </Col>
                     </Row>
                     <Row>
-                      <h5 className='ft-bold'>Grupo 4</h5>
+                      <h5 className='ft-bold'>TV Services</h5>
                       <div className="divider green-1-light"></div>
                       <br/>
                       <Col m={3}>
                           <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/MEGACABLE_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -347,16 +362,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/SKY_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -365,16 +380,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/TOTALPLAY_logo.png`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>
@@ -383,16 +398,16 @@ const Inicio = () => {
                       <Col m={3}>
                       <Card className='card-panel hoverable'
                           header={ 
-                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/AT&T_logo.png`}></CardTitle>
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/DISH_logo.svg`}></CardTitle>
                           }
                         >        
                         <div className="divider green-1"></div>
                           {/* Switch  */}
-                        <div class="switch divFlex-center mt-20">
+                        <div className="switch divFlex-center mt-20">
                             <label>
                               Off
                               <input type="checkbox"/>
-                              <span class="lever"></span>
+                              <span className="lever"></span>
                               On
                             </label>
                           </div>

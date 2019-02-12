@@ -50,7 +50,11 @@
 /* Divs */
 .divFlex-space-betwwen{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
+}
+
+.divFlex-ai-center{
+  align-items: center;
 }
 
 .divFlex-center{
