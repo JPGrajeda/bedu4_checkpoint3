@@ -9,28 +9,28 @@ import './Sidebar.css';
 
 class Sidebar extends Component {
 
-    state = {
-        isSelected: false
-    }    
+    getSiblings = (elem) => {
 
-    handleClick = () => {
-        this.setState({
-            isSelected: true
-        })
+        // Setup siblings array and get the first sibling
+        var sibling = elem.parentNode.parentNode.firstChild;
+
+        // Loop through each sibling and push to the array
+        while (sibling) {
+            if (sibling.nodeType === 1 && sibling !== elem) {                          
+                sibling.classList.remove('active');
+            }
+            sibling = sibling.nextSibling
+        }
+
+        elem.parentNode.classList.add('active');
+    
+    };
+
+    handleClick = (event) => {
+        this.getSiblings(event.target);
     }
 
     render(){
-
-
-        var isSelected = this.state.isSelected;
-        var style = {
-            'backgroundColor': '#ccc'
-        };
-        if (isSelected) {
-            style = {
-                'backgroundColor': '#ccc'
-            };
-        }
 
         var sbar = {
             marginTop: '64px'
@@ -41,13 +41,13 @@ class Sidebar extends Component {
             <>
                 <SideNav id='SideNav' className='blue-grey darken-3' style={sbar} fixed>
                     <li className='active'>
-                        <Link onClick={this.handleClick} style={style} to="/dashboard" className="link textCoiny">Home</Link>
+                        <Link onClick={(e) => this.handleClick(e)}  to="/dashboard" className="link textCoiny" >Home</Link>
                         </li>
                     {/* <li className='active'>
                         <Link to="/dashboard/servicios"  className="link textCoiny">Services</Link>
                         </li> */}
                     <li>
-                        <Link onClick={this.handleClick} style={style} to="/dashboard/historial" className="link textCoiny">Records</Link>
+                        <Link onClick={(e) => this.handleClick(e)} to="/dashboard/historial" className="link textCoiny">Records</Link>
                     </li>
                 </SideNav>
     
