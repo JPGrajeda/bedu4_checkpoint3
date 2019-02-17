@@ -1,24 +1,25 @@
 import React from 'react';
 
 // styles
-import './Dashboard.css';
-
-// Router
-import { Route } from "react-router-dom";
+import styles from './Dashboard.module.css';
 
 // component
-import Upbar from '../Navbar/Navbar';
-import Sidebar from '../Sidebar/Sidebar';
+import Upbar from './Navbar/Navbar';
+import Sidebar from './Sidebar/Sidebar';
 import Content from './Content/Content';
 
-const Dashboard = (props) => (
-	<div>
-		<Upbar/>
-        <Sidebar/>
-        <div className='content'>
-            <Content/>
-        </div>
-	</div>
-);
+const Dashboard = props => {
+
+    return (
+        <>
+            <Upbar/>
+            <Sidebar/>
+            <div className={styles.content}>
+                <Content {...props}/>
+            </div>
+        </>
+    )
+    
+}
 
 export default Dashboard;

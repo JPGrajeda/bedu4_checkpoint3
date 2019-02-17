@@ -1,18 +1,21 @@
-
-import React from 'react';
+import React from 'react'
 
 // Router
-import { Route } from "react-router-dom";
+import { Switch , Route } from "react-router-dom"
 
 // Components
-import Dashboard from "./Dashboard/Dashboard";
-import Landingpage from "./Landingpage/Landingpage";
+import Dashboard from "./Dashboard/Dashboard"
+import Landingpage from "./Landingpage/Landingpage"
+import Paymentform from "./Dashboard/Content/Payment/PaymentForm"
 
-const Main = (props) => (
-        <div>
-          <Route exact path="/" render={ Landingpage }></Route>
-          <Route exact path="/dashboard" render={ Dashboard }></Route>
-        </div>
+const Main = () => (
+        <>
+            <Switch>
+                <Route exact path="/" component={ Landingpage }></Route>
+                <Route path="/dashboard" component={ Dashboard }></Route>
+                <Route path="/paymentform" component={Paymentform}></Route>
+            </Switch>
+        </>
     )
 
-export default Main;
+export default Main

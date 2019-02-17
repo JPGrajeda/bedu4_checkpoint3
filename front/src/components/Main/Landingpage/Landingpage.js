@@ -1,11 +1,24 @@
 import React from 'react';
 
+import Login from './Login/Login';
+import NavBar from './Navbar/Navbar'
+import FooterLogin from './Footer/Footer';
 const Landingpage  = () => {
 
     return(
+
         <div>
-            <h1> Landingpage </h1>
+           <div>
+                <NavBar></NavBar>
+           </div>
+           <div>
+                <Login></Login>
+           </div>
+           <div>
+               <FooterLogin></FooterLogin>
+           </div>
         </div>
+        
     )
 
 }

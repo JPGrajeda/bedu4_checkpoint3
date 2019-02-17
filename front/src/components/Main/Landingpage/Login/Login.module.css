@@ -1,0 +1,19 @@
+
+.gridTemplate{
+  display: inline-block;
+  width: 100%;
+  align-content: center;
+  align-items:center;
+  height: 100%;
+  margin: 10px 10px 0px 0px;
+
+}
+.backgroundImgLogin{
+  width: 100%;
+  height: 100%;
+}
+
+
+.login{
+  max-width: 400px;
+}

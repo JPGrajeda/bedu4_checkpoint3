@@ -4,6 +4,11 @@
   background-color: rgba(69, 179, 156, 1);
 }
 
+.green-2 {
+  background-color: rgba(69, 179, 156, .1);
+  
+}
+
 /* Fonts */
 .txtCoiny{
   font-family: 'Coiny', cursive;
@@ -16,4 +21,131 @@
 .txtOpenSans-600{
   font-family: 'Open Sans', "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: 600;
+}
+
+.txt-center{
+  text-align: center;
+}
+
+.ft-20{
+  font-size: 20px;
+}
+
+.ft-25{
+  font-size: 25px;
+}
+
+.ft-green-1{
+  color: rgba(69, 179, 156, 1);
+}
+
+.ft-large{
+  font-size: larger;
+}
+
+.ft-bold{
+  font-weight: bold;
+}
+
+/* Divs */
+.divFlex-space-betwwen{
+  display: flex;
+  justify-content: space-between; 
+}
+
+.divFlex-ai-center{
+  align-items: center;
+}
+
+.divFlex-center{
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Marigns */
+
+.m-0{
+  margin: 0;
+}
+
+.mt-20{
+  margin-top: 20px;
+}
+
+.mt-40{
+  margin-top: 40px;
+}
+
+.mtb-20{
+  margin: 20px 0 20px 0;
+}
+
+.mb-0{
+  margin-bottom: 0;
+}
+
+/* Paddings*/
+.pd-tb-20{
+  padding: 20px 0 20px 0;
+}
+
+.pd-tb-40{
+  padding: 40px 0 40px 0;
+}
+
+.pd-t-20{
+  padding-top: 20px;
+}
+
+.pd-t-40{
+  padding-top: 40px;
+}
+
+/* Materialize*/
+
+.divider {
+  height: 2px;
+}
+
+
+/* Heights and Widths */
+
+
+.vh-23{
+  height: 23vh;
+}
+
+
+/* pils login */
+.tabs .tab a {
+  color: rgba(70, 180, 156, 0.39) !important;
+  /*Custom Text Color*/
+}
+
+.tabs .tab a:hover {
+  color:rgba(70, 180, 156, 0.39);
+  /*Custom Color On Hover*/
+}
+
+.tabs .tab a.active {
+  color:rgba(69, 179, 156, 1) !important;
+  /*Custom Text Color While Active*/
+  background-color: rgba(70, 180, 156, 0.1);
+  /*Custom Background Color While Active*/
+}
+
+.tabs .indicator {
+  background-color:rgba(69, 179, 156, 1)
+  /*Custom Color Of Indicator*/
+}
+
+.tabs{
+  border-radius: 5px 5px 0 0;
+}
+
+#sing_up, #sing_in{
+  height: 319px;
+  max-height: 319px;
+  border-radius: 0 0 5px 5px;
 }
