@@ -107,6 +107,83 @@ const Inicio = () => {
                   {/* servicios */}
                   <CardPanel className="black-text">
                     <Row>
+                      <h5 className='ft-bold'>Banks</h5>
+                      <div className="divider green-1-light"></div>
+                      <br/>
+                      <Col m={3}>
+                        <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/SANTANDER_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider green-1"></div>
+                          {/* Switch  */}
+                        <div className="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span className="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                      <Col m={3}>
+                        <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/BANAMEX_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider green-1"></div>
+                          {/* Switch  */}
+                        <div className="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span className="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                      <Col m={3}>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/HSBC_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider green-1"></div>
+                          {/* Switch  */}
+                        <div className="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span className="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                      <Col m={3}>
+                      <Card className='card-panel hoverable'
+                          header={ 
+                              <CardTitle className={`${stylesInicio.responsiveImg} divFlex-center`} image={`./img/services/BBVA_logo.png`}></CardTitle>
+                          }
+                        >        
+                        <div className="divider green-1"></div>
+                          {/* Switch  */}
+                        <div className="switch divFlex-center mt-20">
+                            <label>
+                              Off
+                              <input type="checkbox"/>
+                              <span className="lever"></span>
+                              On
+                            </label>
+                          </div>
+                        </Card>
+                      </Col>
+                    </Row>
+                    <Row>
                       <h5 className='ft-bold'>Basic Services</h5>
                       <div className="divider green-1-light"></div>
                       <br/>
