@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-
-// Components
+import axios from 'axios';
 import Main from "./components/Main/Main";
 
-const App = () =>{
-  return (
-      <>
-          <Main></Main>
-      </>
-  
-  )
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			algo: ''
+		}
+	}
+
+	async componentDidMount() {
+		let algo = await axios.get('/api/algo');
+		this.setState({
+			algo
+		})
+	}
+
+	render() {
+		console.log(this.state.algo);
+		return (
+			<Main>
+				
+			</Main>
+		);
+	}
 }
-
-
 
 export default App;
