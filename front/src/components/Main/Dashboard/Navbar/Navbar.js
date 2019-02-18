@@ -21,7 +21,7 @@ const Upbar = () => {
                 right 
                 fixed
             >
-                <NavItem onClick={() => console.log('test click')} className='green-1'>Cerrar Sesion</NavItem>
+                <NavItem onClick={() => console.log('test click')} className='green-1'>Sign out</NavItem>
             </Navbar>
         </>
     )
