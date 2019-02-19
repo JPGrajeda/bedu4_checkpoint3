@@ -1,5 +1,9 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
+
+mongoose.connect('mongodb://admin:admin123@ds337985.mlab.com:37985/bedu_final');
 
 const app = express();
 app.use(bodyParser.json());
