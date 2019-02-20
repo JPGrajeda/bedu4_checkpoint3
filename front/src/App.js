@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import Main from "./components/Main/Main";
+// import Main from "./components/Main/Main";
+import Historial from "./components/Main/Dashboard/Content/Historial/Historial";
+import ErrorBoundary from './components/Main/Dashboard/Content/Historial/HistorialElementos/ErrroBoundary';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			algo: ''
+			pagos: ''
 		}
 	}
 
 	async componentDidMount() {
-		let algo = await axios.get('/api/algo');
+		let pagos = await axios.get('/api/pagos');
 		this.setState({
-			algo
+			pagos
 		})
 	}
 
 	render() {
-		console.log(this.state.algo);
+		console.log(this.state.pagos);
 		return (
-			<Main>
+			<ErrorBoundary>
+			<Historial></Historial>
+			
+			</ErrorBoundary>
+			// <Main>
 				
-			</Main>
+			// </Main>
 		);
 	}
 }
