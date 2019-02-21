@@ -12,10 +12,8 @@ class App extends Component {
 	}
 
 	async componentDidMount() {
-		let algo = await axios.get('/api/algo');
-		this.setState({
-			algo
-		})
+		let algo = await axios.get('/api/tarjetas');
+		console.log(algo);
 	}
 
 	render() {

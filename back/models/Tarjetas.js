@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const tarjetaSchema = new Schema({
+const tarjetasSchema = new Schema({
     id: Number,
 	cuenta: String,
 	pin: Number,
@@ -9,4 +9,4 @@ const tarjetaSchema = new Schema({
     alias: String
 });
 
-mongoose.model('tarjetas', tarjetaSchema);
+mongoose.model('tarjetas', tarjetasSchema);
