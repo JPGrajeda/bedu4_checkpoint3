@@ -12,7 +12,8 @@ app.use(bodyParser.json());
 //     res.send('1234');
 // });
 
-require('./routes/tarjetasRoutes')(app);
+require('./routes/tarjetasRoutes')(app); // ROUTES API TARJETAS
+require('./routes/pagosRoutes')(app); // ROUTES API PAGOS
 
 // Configuration for heroku
 if (process.env.NODE_ENV === 'production') {

@@ -9,8 +9,9 @@ const pagoSchema = new Schema({
     total: Number,
 	servicio: [{
         id_servicio:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'servicios'},
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'servicios'
+        },
 		cantidad: Number,
         nombre: String,
         importe: Number,
