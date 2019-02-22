@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 //     res.send('1234');
 // });
 
-require('./routes/tarjetas')(app);
+require('./routes/tarjetasRoutes')(app);
 
 // Configuration for heroku
 if (process.env.NODE_ENV === 'production') {
