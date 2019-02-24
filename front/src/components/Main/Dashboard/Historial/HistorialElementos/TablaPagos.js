@@ -2,7 +2,7 @@ import React,{ Component }  from 'react';
 import { Table, Col } from 'react-materialize';
 import axios from 'axios';
 
-import NavBar from './Navbar';
+import NavBar from '../../../Landingpage/Navbar/Navbar';
 import './TablaPagos.css';
 
 
@@ -93,3 +93,5 @@ constructor(props) {
 
 
 export default TablaPagos;
+
+//background-color: rgba(69, 179, 156, 1);

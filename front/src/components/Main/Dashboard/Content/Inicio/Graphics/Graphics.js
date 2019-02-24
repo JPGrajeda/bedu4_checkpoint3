@@ -91,6 +91,8 @@ class Graphics extends Component {
                                 < Pie 
                                     data={dataPie}
                                     options={options}
+                                    height={200}
+                                    width={600}
                                 />
                             </CardPanel>
                         </Col>
@@ -101,6 +103,7 @@ class Graphics extends Component {
                                     options={{
                                         maintainAspectRatio: false
                                     }}
+                                    height={200}
                                 />
                             </CardPanel>
                         </Col>

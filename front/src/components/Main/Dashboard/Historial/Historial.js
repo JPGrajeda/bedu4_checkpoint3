@@ -1,6 +1,7 @@
 import React from 'react';
 import TablaPagos  from './HistorialElementos/TablaPagos';
-import Inicio from './../Inicio/Inicio';
+import './Historial.scss';
+import Inicio from './../Content/Inicio/Inicio';
 import { Route } from "react-router-dom";
 
 
