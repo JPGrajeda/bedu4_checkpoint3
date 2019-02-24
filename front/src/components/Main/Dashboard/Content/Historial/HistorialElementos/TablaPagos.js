@@ -2,7 +2,7 @@ import React,{ Component }  from 'react';
 import { Table, Col } from 'react-materialize';
 import axios from 'axios';
 
-import NavBar from '../../../Landingpage/Navbar/Navbar';
+import NavBar from './Navbar';
 import './TablaPagos.css';
 
 

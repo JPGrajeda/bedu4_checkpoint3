@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-// import Main from "./components/Main/Main";
-import Historial from "./components/Main/Dashboard/Content/Historial/Historial";
-import ErrorBoundary from './components/Main/Dashboard/Content/Historial/HistorialElementos/ErrroBoundary';
+import Main from "./components/Main/Main";
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			tarjetas: '',
 			pagos: ''
 		}
 	}
 
 	async componentDidMount() {
 		let pagos = await axios.get('/api/pagos');
+		let tarjetas = await axios.get('/api/tarjetas');
 		this.setState({
-			pagos
+			pagos,
+			tarjetas
 		})
 	}
 
 	render() {
 		console.log(this.state.pagos);
+		console.log(this.state.tarjetas);
 		return (
-			<ErrorBoundary>
-			<Historial></Historial>
-			
-			</ErrorBoundary>
-			// <Main>
+			<Main>
 				
-			// </Main>
+			</Main>
 		);
 	}
 }
 
 export default App;
+
