@@ -1,0 +1,87 @@
+h1 {
+    font-size: 40px;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 0;
+    font-family: "Coiny",cursive;
+    }
+    
+.scrolling-wrapper-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+.table {
+    width: 100%;
+    table-layout: fixed;
+   
+}
+
+.tbl-header {
+    background-color: rgba(255,255,255,0.3);
+}
+
+.tbl-content {
+    height: 50px;
+    
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+  
+th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: grey;
+    text-transform: uppercase;
+    text-decoration-style: bold;
+    flex: 0 0 auto;
+}
+  
+td {
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 12px;
+    color: black;
+    border-bottom: solid 1px rgba(255,255,255,0.1);
+    flex: 0 0 auto;
+}
+  
+  
+  /* demo styles */
+  
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+    body {
+        background: -webkit-linear-gradient(left, rgba(69, 179, 156, 1), white);
+        background: linear-gradient(to right, white, rgba(69, 179, 156, 1));
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+    }
+
+section {
+    margin-top: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+ 
+  /* for custom scrollbar for webkit browser*/
+  
+::-webkit-scrollbar {
+      width: 1px;
+
+} 
+::-webkit-scrollbar-track-y {
+      -webkit-box-shadow: inset 0 0 20px rgba(83, 236, 224, 0.507);
+ 
+} 
+::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}

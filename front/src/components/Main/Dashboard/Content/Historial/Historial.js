@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TablaPagos  from './HistorialElementos/TablaPagos';
 import './Historial.scss';
-import ErrorBoundary  from './HistorialElementos/ErrroBoundary';
-// import  Futer from './HistorialElementos/Futer';
+import Inicio from './../Content/Inicio/Inicio';
+import { Route } from "react-router-dom";
 
-class Historial extends Component {
 
-    render () {
+const Historial = props => {
         
-        return (
+    return (
+        <>    
             <div className="content">
-                <h1 className="titulo">Historial</h1>
-                <ErrorBoundary>
-                    <TablaPagos />
-                    {/* <Futer /> */}
-                </ErrorBoundary>           
+                <Route exact path={`${props.match.path}`} render={Inicio}/>
+                <Route path={`${props.match.path}/pagos`} render={TablaPagos} />        
             </div>
+        </>
         )
     }
-}
+
 export default Historial;
