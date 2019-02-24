@@ -4,10 +4,10 @@ const { Schema } = mongoose;
 
 const pagosSchema = new Schema({
     fecha: Number,
-    idTarjeta: Number,
+    id_tarjeta: Number,
     total: Number,
     servicio: {
-        ids: Number,
+        id_servicio: Number,
         cantidad: Number,
         nombre: String,
         importe: Number,
@@ -16,4 +16,5 @@ const pagosSchema = new Schema({
 });
 
 mongoose.model('pagos', pagosSchema);
+
 

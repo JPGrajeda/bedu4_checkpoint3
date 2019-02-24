@@ -7,23 +7,19 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tarjetas: '',
-			pagos: ''
+			algo: ''
 		}
 	}
 
 	async componentDidMount() {
-		let pagos = await axios.get('/api/pagos');
-		let tarjetas = await axios.get('/api/tarjetas');
-		this.setState({
-			pagos,
-			tarjetas
-		})
+		let algo = await axios.get('/api/pagos');
+		console.log(algo);
+	
 	}
 
 	render() {
-		console.log(this.state.pagos);
-		console.log(this.state.tarjetas);
+		console.log(this.state.algo);
+	
 		return (
 			<Main>
 				
