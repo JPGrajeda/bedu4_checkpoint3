@@ -48,19 +48,25 @@ module.exports = (app) => {
             //       }
             //     ]
             //  );
+
+
+            // agrupa sercivicios por tarjeta y su total
              const response = await Pago.aggregate(
-                [
-                  {
-                    $group : {
-                        _id: { tarjeta: "$id_tarjeta" , nombre: '$servicio.nombre', importe: '$servicio.importe' },
-                        sum: { $sum: '$servicio.importe' }
-                    } 
-                  },
-                //   {
-                //     $project: {
-                //         'servicio.nombre': 0
-                //     }
-                //   }
+                [ 
+                    {
+                        $match : {'id_tarjeta': '5c6b9ac4fb6fc01c4ce73c7c'}
+                    },
+                    {   
+                        $unwind:'$servicio'
+                    },
+                    {
+                        $group : {
+                            _id: '$servicio.nombre',
+                            importe: { 
+                                $sum: '$servicio.importe' 
+                            }
+                        } 
+                    },
                 ]
              );
 
