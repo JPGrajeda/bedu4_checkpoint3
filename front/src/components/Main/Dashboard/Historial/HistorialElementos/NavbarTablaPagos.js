@@ -1,13 +1,13 @@
 import React  from 'react';
 
 // styles
-import stylesNav from './Navbar.module.css';
+import stylesNav from './NavbarTablaPagos.module.css';
 
 // components materialize
-import {Navbar, NavItem} from 'react-materialize'
+import {Navbar, NavItem} from 'react-materialize';
 import { NavLink } from 'react-router-dom'
 
-const Upbar = () => {
+const NavbarTablaPagos = () => {
 
     return (
         <>
@@ -22,12 +22,12 @@ const Upbar = () => {
                 right 
                 fixed
             >
-                <NavItem className='green-1'><NavLink to="/dashboard">Home</NavLink> </NavItem>
-                <NavItem className='green-1'><NavLink to="/">Sign out</NavLink> </NavItem>
+                <NavItem className='green-1'><NavLink to="/">Sign out</NavLink></NavItem>
+                <NavItem className='green-1'><NavLink to="/dashboard">Home</NavLink></NavItem>
             </Navbar>
         </>
     )
 
 }
 
-export default Upbar;
+export default NavbarTablaPagos;

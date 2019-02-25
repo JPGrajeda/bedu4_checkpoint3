@@ -22,11 +22,12 @@ h1 {
 
 .tbl-header {
     background-color: rgba(255,255,255,0.3);
+    grid: flex;
+    align-items: space-around;
 }
 
 .tbl-content {
     height: 50px;
-    
     margin-top: 0px;
     border: 1px solid rgba(255,255,255,0.3);
 }
