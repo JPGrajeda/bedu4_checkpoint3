@@ -4,8 +4,9 @@ const { Schema } = mongoose;
 const pagoSchema = new Schema({
     fecha: Date,
     id_tarjeta:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'tarjetas'},
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'tarjetas'
+    },
     total: Number,
 	servicio: [{
         id_servicio:{

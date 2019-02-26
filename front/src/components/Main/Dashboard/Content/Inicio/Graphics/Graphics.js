@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
 import {Bar, Pie, Line} from 'react-chartjs-2';
 
+import axios from 'axios';
+
 // components materialize
 import {Row, Col, CardPanel } from 'react-materialize';
 
-const data = {
-    labels: ['Telcel', 'SIAPA', 'CFE', 'Sears', 'Netflix', 'June', 'Xbox'],
-    datasets: [
-      {
-        label: 'Gráfica de Servicios con Mayor Gasto',
-        backgroundColor: 'rgba(255,99,132,0.2)',
-        borderColor: 'rgba(255,99,132,1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
-        data: [65, 59, 80, 81, 56, 55, 40]
-      }
-    ]
-  };
+// const data = {
+//     labels: ['Telcel', 'SIAPA', 'CFE', 'Sears', 'Netflix', 'June', 'Xbox'],
+//     datasets: [
+//       {
+//         label: 'Gráfica de Servicios con Mayor Gasto',
+//         backgroundColor: 'rgba(255,99,132,0.2)',
+//         borderColor: 'rgba(255,99,132,1)',
+//         borderWidth: 1,
+//         hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+//         hoverBorderColor: 'rgba(255,99,132,1)',
+//         data: [65, 59, 80, 81, 56, 55, 40]
+//       }
+//     ]
+//   };
+
+
 
   const dataPie = {
 	labels: [
@@ -82,7 +86,58 @@ const dataLine = {
   }
 
 class Graphics extends Component {
+
+    state = {
+
+      data : {
+        labels: [],
+        datasets: [
+          {
+            label: 'Gráfica de Servicios con Mayor Gasto',
+            backgroundColor: 'rgba(255,99,132,0.2)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1,
+            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+            hoverBorderColor: 'rgba(255,99,132,1)',
+            data: []
+          }
+        ]
+      }
+
+    }
+
+
+    async componentDidMount() {
+      let tipo = await axios.get('/api/pagosTipo');
+      let labels = [];
+      let importe = [];
+
+      tipo.data.map((data) => {
+        return labels.push(data._id);
+      });
+
+      tipo.data.map((data) => {
+        return importe.push(data.importe);
+      });
+
+      this.setState( prevState => ({
+        data: {
+          ...this.state.data,
+          labels: labels,
+          datasets: [
+            {
+              ...this.state.data.datasets[0],
+              data: importe,
+            }
+          ]
+        }
+      }))
+      
+    }
+
+
     render(){
+      console.log(this.state);
         return(
             <>
                     <Row>
@@ -99,7 +154,7 @@ class Graphics extends Component {
                         <Col m={6}>
                             <CardPanel className="green-1-light black-text">
                                 < Bar 
-                                    data={data}
+                                    data={this.state.data}
                                     options={{
                                         maintainAspectRatio: false
                                     }}

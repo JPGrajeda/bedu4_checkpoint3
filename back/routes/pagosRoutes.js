@@ -61,12 +61,12 @@ module.exports = (app) => {
                     },
                     {
                         $group : {
-                            _id: '$servicio.nombre',
+                            _id: '$servicio.nombre' ,
                             importe: { 
                                 $sum: '$servicio.importe' 
                             }
                         } 
-                    },
+                    }
                 ]
              );
 
