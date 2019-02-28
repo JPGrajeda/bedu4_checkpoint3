@@ -42,7 +42,7 @@ class CardsContainer extends Component{
       fechaVencimiento: `${this.state.exp_date_mm}-${this.state.exp_date_yy} `,
       alias: this.state.alias,
     }
-    console.log(card)
+    // console.log(card)
     try{
       await  axios.post('http://localhost:5000/api/tarjetas',card)
       this.setState({isModalOpen:false})
@@ -61,7 +61,7 @@ class CardsContainer extends Component{
   }
 
   deleteCard = () =>{
-    console.log('eliminar')
+    // console.log('eliminar')
   }
   
 
@@ -106,27 +106,34 @@ handleOpenModal = (x)=>{
                         </div>
                           <div className="divider green-1-light"></div>
                         <br/>
-                        {this.state.cards.map(function(x, i){
-                          return (
-                            <table  className='divFlex-space-betwwen'>
-                              <tr key={i}>
-                                <td>
-                                  <h6> 
-                                    {x.alias} 
-                                  </h6>
-                                </td>
-                                <td>
-                                <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' /> 
-                                </td>
-                                <td>
-                                <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete' />
-                                </td>
-                              </tr>
-                            </table>
-                           
-                          )
-                          
-                        })}
+                       
+                       
+                        <table  className='divFlex-space-betwwen'>
+                          <tbody>
+                          {
+                            this.state.cards.map(function(x, i){
+                              console.log(x);
+                              console.log(i);                         
+                              return (
+                                  <tr key={i} value={x._id}>
+                                    <td>
+                                      <h6> 
+                                        {x.alias} 
+                                      </h6>
+                                    </td>
+                                    <td>
+                                    <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' /> 
+                                    </td>
+                                    <td>
+                                    <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete' />
+                                    </td>
+                                  </tr>
+                              
+                                    ) 
+                            })
+                          }
+                          </tbody>
+                        </table>
                     </CardPanel>
                      
         </div>

@@ -22,6 +22,7 @@ const Inicio = () => {
                   <Col m={3}>
                     <CardContainer/>
                   </Col>   
+                  
                   <Col m={3}>
                     <CardPanel className="black-text">
                       <h5>Closing date</h5>

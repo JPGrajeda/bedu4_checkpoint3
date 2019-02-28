@@ -155,7 +155,6 @@ class Graphics extends Component {
       let tipo = await axios.get('/api/pagosTipo');
       let labels = [];
       let importe = [];
-      console.log(tipo);  
       tipo.data.map((data) => {
         return labels.push(data._id);
       });
@@ -184,9 +183,7 @@ class Graphics extends Component {
     }
 
 
-    render(){
-      console.log('state: ', this.state.dataPie);
-      
+    render(){      
         return(
             <>
                     <Row>
@@ -213,7 +210,7 @@ class Graphics extends Component {
                         </Col>
                         
                     </Row>
-                    <Row>
+                    {/* <Row>
                         <Col m={12}>
                             <CardPanel className="green-1-light black-text">
                                 <Line 
@@ -222,7 +219,7 @@ class Graphics extends Component {
                                 />
                             </CardPanel>
                          </Col>
-                    </Row>
+                    </Row> */}
             </>
             )
         }
