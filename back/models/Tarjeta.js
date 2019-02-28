@@ -5,7 +5,7 @@ const tarjetaSchema = new Schema({
     id: Number,
 	cuenta: String,
 	pin: Number,
-    fechaVencimiento: Date,
+    fechaVencimiento: String,
     alias: String
 });
 
