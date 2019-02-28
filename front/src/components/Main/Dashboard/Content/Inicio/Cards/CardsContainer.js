@@ -60,7 +60,7 @@ class CardsContainer extends Component{
     })
   }
 
-  deleteCard(){
+  deleteCard = () =>{
     console.log('eliminar')
   }
   
@@ -74,6 +74,7 @@ handleInputChange = event => {
 handleOpenModal = (x)=>{
   this.setState({isModalOpen:true});
 }
+
     
     render(){
         return(
@@ -107,14 +108,22 @@ handleOpenModal = (x)=>{
                         <br/>
                         {this.state.cards.map(function(x, i){
                           return (
-                            <div key={i} className='divFlex-space-betwwen'>
-                              <h6> 
-                                {x.alias} 
-                                 <Button  floating className={`${stylesInicio.greenAdd} `} waves='light' icon='delete' onClick={()=>this.deleteCard()} /> 
-                                <Icon right >credit_card</Icon>
-                              </h6>
-
-                            </div>
+                            <table  className='divFlex-space-betwwen'>
+                              <tr key={i}>
+                                <td>
+                                  <h6> 
+                                    {x.alias} 
+                                  </h6>
+                                </td>
+                                <td>
+                                <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' /> 
+                                </td>
+                                <td>
+                                <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete' />
+                                </td>
+                              </tr>
+                            </table>
+                           
                           )
                           
                         })}
