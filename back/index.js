@@ -6,7 +6,13 @@ const bodyParser = require('body-parser');
 mongoose.connect('mongodb://admin:admin123@ds337985.mlab.com:37985/bedu_final',{ useNewUrlParser: true });
 
 const app = express();
+var cors = require('cors')
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors())
+
+
 
 // app.get('/api/algo', (req, res) => {
 //     res.send('1234');

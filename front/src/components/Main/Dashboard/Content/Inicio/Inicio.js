@@ -4,10 +4,11 @@ import  React  from 'react';
 import stylesInicio from './Inicio.module.css';
 
 // components materialize
-import {Row, Col, Card, CardPanel, Button, Icon, CardTitle } from 'react-materialize'
+import {Row, Col, Card, CardPanel, Button, CardTitle } from 'react-materialize'
 
 // components react
 import Graphics from './Graphics/Graphics';
+import CardContainer from './Cards/CardsContainer';
 
 const Inicio = () => {
     return(
@@ -19,26 +20,7 @@ const Inicio = () => {
                 <Row className='m-0'>
 
                   <Col m={3}>
-                    <CardPanel className="black-text">
-                        <div className='divFlex-space-betwwen'>
-                          <div>
-                            <h5>Cards</h5>
-                          </div>
-                          <div>
-                            <Button floating className={`${stylesInicio.greenAdd} `} waves='light' icon='add' />  
-                          </div>
-                        </div>
-                          <div className="divider green-1-light"></div>
-                        <br/>
-                        <div className='divFlex-space-betwwen'>
-                          <div>
-                            <h6> Kevin Gonzalez  </h6>
-                          </div>
-                          <div>
-                            <Icon right>credit_card</Icon>
-                          </div>
-                        </div>
-                    </CardPanel>
+                    <CardContainer/>
                   </Col>   
                   <Col m={3}>
                     <CardPanel className="black-text">
