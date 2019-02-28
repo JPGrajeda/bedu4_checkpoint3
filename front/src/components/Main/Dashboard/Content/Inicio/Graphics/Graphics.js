@@ -6,46 +6,30 @@ import axios from 'axios';
 // components materialize
 import {Row, Col, CardPanel } from 'react-materialize';
 
-// const data = {
-//     labels: ['Telcel', 'SIAPA', 'CFE', 'Sears', 'Netflix', 'June', 'Xbox'],
-//     datasets: [
-//       {
-//         label: 'Gráfica de Servicios con Mayor Gasto',
-//         backgroundColor: 'rgba(255,99,132,0.2)',
-//         borderColor: 'rgba(255,99,132,1)',
-//         borderWidth: 1,
-//         hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-//         hoverBorderColor: 'rgba(255,99,132,1)',
-//         data: [65, 59, 80, 81, 56, 55, 40]
-//       }
-//     ]
-//   };
 
-
-
-  const dataPie = {
-	labels: [
-		'Servicios Públicos',
-		'Tarjetas Departamentales',
-        'Servicios Web',
-        'Videojuegos'
-	],
-	datasets: [{
-		data: [300, 150, 100,50],
-		backgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-        '#FFCE56',
-        '#64FE2E'
-		],
-		hoverBackgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-        '#FFCE56',
-        '#64FE2E'
-		]
-	}]
-};
+  // const dataPie = {
+  //         labels: [
+  //           'Servicios Públicos',
+  //           'Tarjetas Departamentales',
+  //               'Servicios Web',
+  //               'Videojuegos'
+  //         ],
+  //         datasets: [{
+  //           data: [300, 150, 100 ,50],
+  //           backgroundColor: [
+  //           '#FF6384',
+  //           '#36A2EB',
+  //           '#FFCE56',
+  //           '#64FE2E'
+  //           ],
+  //           hoverBackgroundColor: [
+  //             '#FF6384',
+  //             '#36A2EB',
+  //             '#FFCE56',
+  //             '#64FE2E'
+  //           ]
+  //         }]
+  //     };
 
 const dataLine = {
     labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
@@ -93,22 +77,55 @@ class Graphics extends Component {
         labels: [],
         datasets: [
           {
-            label: 'Gráfica de Servicios con Mayor Gasto',
-            backgroundColor: 'rgba(255,99,132,0.2)',
+            label: 'Gastos de servicios',
+            backgroundColor: [
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56',
+              '#64FE2E'
+              ],
             borderColor: 'rgba(255,99,132,1)',
             borderWidth: 1,
-            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+            hoverBackgroundColor: [
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56',
+              '#64FE2E'
+            ],
             hoverBorderColor: 'rgba(255,99,132,1)',
             data: []
           }
         ]
+      },
+
+      dataPie : {
+        labels: [
+          'Servicios Públicos',
+          'Tarjetas Departamentales',
+              'Servicios Web',
+              'Videojuegos'
+        ],
+        datasets: [{
+          data: [300, 150, 100 ,50],
+          backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#64FE2E'
+          ],
+          hoverBackgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56',
+            '#64FE2E'
+          ]
+        }]
       }
 
     }
 
-
-    async componentDidMount() {
-      let tipo = await axios.get('/api/pagosTipo');
+    getServicio = async () => {
+      let tipo = await axios.get('/api/pagosServicio');
       let labels = [];
       let importe = [];
 
@@ -131,20 +148,52 @@ class Graphics extends Component {
             }
           ]
         }
-      }))
-      
+      }));
+    }
+
+    getTipo = async () => {
+      let tipo = await axios.get('/api/pagosTipo');
+      let labels = [];
+      let importe = [];
+      console.log(tipo);  
+      tipo.data.map((data) => {
+        return labels.push(data._id);
+      });
+
+      tipo.data.map((data) => {
+        return importe.push(data.importe);
+      });    
+
+      this.setState( prevState => ({
+        dataPie: {
+          ...this.state.data,
+          labels: labels,
+          datasets: [
+            {
+              ...this.state.data.datasets,
+              data: importe,
+            }
+          ]
+        }
+      }));
+    }
+
+    componentDidMount() {
+      this.getServicio();
+      this.getTipo();
     }
 
 
     render(){
-      console.log(this.state);
+      console.log('state: ', this.state.dataPie);
+      
         return(
             <>
                     <Row>
                         <Col m={6}> 
                             <CardPanel className="green-1-light black-text">
                                 < Pie 
-                                    data={dataPie}
+                                    data={this.state.dataPie}
                                     options={options}
                                     height={200}
                                     width={600}

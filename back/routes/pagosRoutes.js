@@ -15,8 +15,8 @@ module.exports = (app) => {
         }
 	});
 
-    // GET PAGOS POR TIPO
-    app.get('/api/pagosTipo', async (req, res) => {
+    // GET PAGOS POR SERVICIO
+    app.get('/api/pagosServicio', async (req, res) => {
         try {
             // const response = await Pago.find({}).select({ servicio: 1 }); // trae todo los servicios pagados
             // const response = await Pago.find({})
@@ -62,6 +62,36 @@ module.exports = (app) => {
                     {
                         $group : {
                             _id: '$servicio.nombre' ,
+                            importe: { 
+                                $sum: '$servicio.importe' 
+                            }
+                        } 
+                    }
+                ]
+             );
+
+            res.send(response);
+        } catch (error) {
+            console.log('error api pagos');
+            res.send(error.message);
+        }
+    });
+    
+
+    app.get('/api/pagosTipo', async (req, res) => {
+        try {
+            // agrupa sercivicios por tarjeta y su total
+             const response = await Pago.aggregate(
+                [ 
+                    {
+                        $match : {'id_tarjeta': '5c6b9ac4fb6fc01c4ce73c7c'}
+                    },
+                    {   
+                        $unwind:'$servicio'
+                    },
+                    {
+                        $group : {
+                            _id: '$servicio.tipo' ,
                             importe: { 
                                 $sum: '$servicio.importe' 
                             }
