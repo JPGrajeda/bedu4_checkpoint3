@@ -11,7 +11,8 @@ module.exports = (app) => {
             console.log('error api tarjetas');
             res.send(error.message);
         }
-	});
+    });
+    
 
     app.post('/api/tarjetas', async (req, res) => {
         try {
@@ -26,5 +27,26 @@ module.exports = (app) => {
             console.log('error api tarjetas');
             res.send(error.message);
         }
+    });
+    
+    app.delete('/api/tarjetas/:id', async (req, res) => {
+        try {
+            const response = await Tarjeta.deleteOne({_id: req.params.id});
+            res.send(response);
+        } catch (error) {
+            console.log('error api delete tarjetas');
+            res.send(error.message);
+        }
+    });
+
+    app.get('/api/tarjetas/:id', async (req, res) => {
+        try {
+            const response = await Tarjeta.find({_id:req.params.id});
+            res.send(response);
+        } catch (error) {
+            console.log('error api tarjetas');
+            res.send(error.message);
+        }
 	});
+    
 };
