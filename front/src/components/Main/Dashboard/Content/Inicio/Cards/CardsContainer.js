@@ -37,13 +37,14 @@ class CardsContainer extends Component{
   AddCard = async(e)=>{
     e.preventDefault();
     const card = {
+      _id : this.state._id,
       cuenta : this.state.card_number,
       pin: this.state.security_code,
       fechaVencimiento: `${this.state.exp_date_mm}-${this.state.exp_date_yy} `,
       alias: this.state.alias,
     }
     try{
-      await  axios.post('http://localhost:5000/api/tarjetas',card)
+      await  axios.post(this.state._id ? 'http://localhost:5000/api/tarjetas':`http://localhost:5000/api/tarjetas/${this.state._id}`,card)
       this.setState({isModalOpen:false})
       this.GetCardsAPI();
     }
@@ -65,6 +66,24 @@ class CardsContainer extends Component{
     try{
       await axios.delete(`http://localhost:5000/api/tarjetas/${x._id}`);
       this.GetCardsAPI();
+    }
+    catch(error){
+      console.error(error);
+    }
+  }
+
+  onUpdateCard = async(x)=>{
+    try{
+      const response = await axios.get(`http://localhost:5000/api/tarjetas/${x._id}`);
+      this.setState({
+        _id:response.data[0]._id,
+        card_number: response.data[0].cuenta,
+        security_code:response.data[0].pin,
+        exp_date_mm:response.data[0].fechaVencimiento,
+        exp_date_yy:response.data[0].fechaVencimiento,
+        alias:response.data[0].alias,
+        isModalOpen: true
+      })
     }
     catch(error){
       console.error(error);
@@ -93,7 +112,7 @@ class CardsContainer extends Component{
                                               </h6>
                                           </td>
                                           <td>
-                                              <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' /> 
+                                              <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' onClick= {()=>this.onUpdateCard(x)}/> 
                                           </td>
                                           <td>
                                               <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete'  onClick= {()=>this.onDeleteCard(x)}/>
@@ -109,11 +128,11 @@ class CardsContainer extends Component{
                                 <p>We don't share your financial details with the merchant</p>
                                 <form onSubmit={(e)=>this.AddCard(e)}>
                                   <Row>
-                                        <Input required autoFocus id="card_number" s={6} label="Card Number" onChange={(e) => this.handleInputChange(e)} />
-                                        <Input required id="exp_date_mm"  s={3} label="Expiration date" placeholder="MM" onChange={(e) => this.handleInputChange(e)} /> 
-                                        <Input required id="exp_date_yy" s={3} placeholder="YY" onChange={(e) => this.handleInputChange(e)} /> 
-                                        <Input required id="security_code" s={3} label="Security Code" onChange={(e) => this.handleInputChange(e)} />
-                                        <Input required id="alias" s={6} label="Alias" onChange={(e) => this.handleInputChange(e)} />
+                                        <Input required autoFocus id="card_number" s={6} label="Card Number" onChange={(e) => this.handleInputChange(e)}  value={this.state.card_number}/>
+                                        <Input required id="exp_date_mm"  s={3} label="Expiration date" placeholder="MM" onChange={(e) => this.handleInputChange(e)}  value={this.state.exp_date_mm}/> 
+                                        <Input required id="exp_date_yy" s={3} placeholder="YY" onChange={(e) => this.handleInputChange(e)} value={this.state.exp_date_yy} /> 
+                                        <Input required id="security_code" s={3} label="Security Code" onChange={(e) => this.handleInputChange(e)} value={this.state.security_code}/>
+                                        <Input required id="alias" s={6} label="Alias" onChange={(e) => this.handleInputChange(e)} value={this.state.alias}/>
                                     </Row>
                                     <Button type="submit" waves='light'>Save</Button>
                                 </form>
