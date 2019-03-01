@@ -47,6 +47,24 @@ module.exports = (app) => {
             console.log('error api tarjetas');
             res.send(error.message);
         }
-	});
+    });
+    
+    app.post('/api/tarjetas/:id', async (req, res) => {
+        try {
+            var card = new Tarjeta();
+            card._id = req.body._id;
+            card.cuenta = req.body.cuenta;
+            card.pin= req.body.pin;
+            card.fechaVencimiento= req.body.fechaVencimiento;
+            card.alias=req.body.alias ;
+
+            await Tarjeta.findByIdAndUpdate({_id:req.params.id}, card);
+           
+            res.send({ message: 'trjeta editada!' });
+        } catch (error) {
+            console.log('error api tarjetas');
+            res.send(error.message);
+        }
+    });
     
 };
