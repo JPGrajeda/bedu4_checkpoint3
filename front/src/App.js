@@ -13,11 +13,11 @@ class App extends Component {
 
 	async componentDidMount() {
 		let algo = await axios.get('/api/tarjetas');
-		console.log(algo);
+		// console.log(algo);
 	}
 
 	render() {
-		console.log(this.state.algo);
+		// console.log(this.state.algo);
 		return (
 			<Main>
 				

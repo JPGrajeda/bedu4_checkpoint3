@@ -6,77 +6,76 @@ import axios from 'axios';
 import stylesInicio from '../Inicio.module.css';
 
 class CardsContainer extends Component{
-  constructor(props) {
-    super(props);
-    this.state= {
-      _id:"",
-      card_number: "",
-      security_code:0,
-      exp_date_mm:"",
-      exp_date_yy:"",
-      alias:"",
-      cards:[],
-      isModalOpen:false,
+    constructor(props) {
+      super(props);
+      this.state= {
+        _id:"",
+        card_number: "",
+        security_code:0,
+        exp_date_mm:"",
+        exp_date_yy:"",
+        alias:"",
+        cards:[],
+        isModalOpen:false,
+      }
     }
-  }
- 
-  componentDidMount(){
-    this.GetCardsAPI();
-  }
-
-  GetCardsAPI = async() => {
-       axios.get('http://localhost:5000/api/tarjetas')
-      .then(response => {
-        this.setState({ cards: response.data });
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
-
-  AddCard = async(e)=>{
-    e.preventDefault();
-    const card = {
-      cuenta : this.state.card_number,
-      pin: this.state.security_code,
-      fechaVencimiento: `${this.state.exp_date_mm}-${this.state.exp_date_yy} `,
-      alias: this.state.alias,
-    }
-    // console.log(card)
-    try{
-      await  axios.post('http://localhost:5000/api/tarjetas',card)
-      this.setState({isModalOpen:false})
+  
+    componentDidMount(){
       this.GetCardsAPI();
     }
-    catch(error) {
-      console.error(error);
+
+    GetCardsAPI = async() => {
+        axios.get('http://localhost:5000/api/tarjetas')
+        .then(response => {
+          this.setState({ cards: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     }
-  }
 
-  GetCards = async () => {
-    const res = await this.GetCardsAPI();
-    this.setState({
-      cards: res.data
-    })
-  }
+    AddCard = async(e)=>{
+      e.preventDefault();
+      const card = {
+        cuenta : this.state.card_number,
+        pin: this.state.security_code,
+        fechaVencimiento: `${this.state.exp_date_mm}-${this.state.exp_date_yy} `,
+        alias: this.state.alias,
+      }
+      // console.log(card)
+      try{
+        await  axios.post('http://localhost:5000/api/tarjetas',card)
+        this.setState({isModalOpen:false})
+        this.GetCardsAPI();
+      }
+      catch(error) {
+        console.error(error);
+      }
+    }
 
-  deleteCard = () =>{
-    // console.log('eliminar')
-  }
-  
+    GetCards = async () => {
+      const res = await this.GetCardsAPI();
+      this.setState({
+        cards: res.data
+      })
+    }
 
-
-handleInputChange = event => {
-  this.setState({
-    [event.target.id]: event.target.value,
-  });
-};
-handleOpenModal = (x)=>{
-  this.setState({isModalOpen:true});
-}
-
+    deleteCard = () =>{
+      // console.log('eliminar')
+    }
     
+    handleInputChange = event => {
+      this.setState({
+        [event.target.id]: event.target.value,
+      });
+    };
+
+    handleOpenModal = (x)=>{
+      this.setState({isModalOpen:true});
+    };
+
     render(){
+      // console.log('tarjeta props: ',this.props.action(13321321));
         return(
         <div>
              <CardPanel className="black-text">
@@ -106,17 +105,14 @@ handleOpenModal = (x)=>{
                         </div>
                           <div className="divider green-1-light"></div>
                         <br/>
-                       
-                       
+                                              
                         <table  className='divFlex-space-betwwen'>
                           <tbody>
                           {
-                            this.state.cards.map(function(x, i){
-                              console.log(x);
-                              console.log(i);                         
+                            this.state.cards.map((x, i) => {
                               return (
-                                  <tr key={i} value={x._id}>
-                                    <td>
+                                  <tr key={i} >
+                                    <td onClick={() => this.props.action(x._id)}>
                                       <h6> 
                                         {x.alias} 
                                       </h6>
@@ -127,9 +123,8 @@ handleOpenModal = (x)=>{
                                     <td>
                                     <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete' />
                                     </td>
-                                  </tr>
-                              
-                                    ) 
+                                  </tr>                          
+                                  ) 
                             })
                           }
                           </tbody>

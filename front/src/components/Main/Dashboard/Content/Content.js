@@ -10,7 +10,7 @@ const Content = props => {
 
     return (
         <>
-             <Route exact path={`${props.match.path}`} render={Inicio}/>
+             <Route exact path={`${props.match.path}`} render={ () => <Inicio /> }/>
              <Route path={`${props.match.path}/servicios`} render={Servicio}/>
         </>
     )

@@ -16,7 +16,7 @@ module.exports = (app) => {
 	});
 
     // GET PAGOS POR SERVICIO
-    app.get('/api/pagosServicio', async (req, res) => {
+    app.get('/api/pagosServicio/:idTarjeta', async (req, res) => {
         try {
             // const response = await Pago.find({}).select({ servicio: 1 }); // trae todo los servicios pagados
             // const response = await Pago.find({})
@@ -49,12 +49,12 @@ module.exports = (app) => {
             //     ]
             //  );
 
-
+            let idTarjeta = req.params.idTarjeta;
             // agrupa sercivicios por tarjeta y su total
              const response = await Pago.aggregate(
                 [ 
                     {
-                        $match : {'id_tarjeta': '5c6b9ac4fb6fc01c4ce73c7c'}
+                        $match : {'id_tarjeta': idTarjeta}
                     },
                     {   
                         $unwind:'$servicio'
@@ -78,13 +78,16 @@ module.exports = (app) => {
     });
     
 
-    app.get('/api/pagosTipo', async (req, res) => {
+    app.get('/api/pagosTipo/:idTarjeta', async (req, res) => {
         try {
+
+            let idTarjeta = req.params.idTarjeta;
+            
             // agrupa sercivicios por tarjeta y su total
              const response = await Pago.aggregate(
                 [ 
                     {
-                        $match : {'id_tarjeta': '5c6b9ac4fb6fc01c4ce73c7c'}
+                        $match : {'id_tarjeta': idTarjeta}
                     },
                     {   
                         $unwind:'$servicio'
