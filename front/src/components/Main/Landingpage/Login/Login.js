@@ -20,33 +20,36 @@ class Login extends Component {
     password = e => this.setState({password: e.target.value });
   
     checkUserAndPassword = e => {
-        const { nombre, password} = this.state;
+        const { nombre, password } = this.state;
         e.preventDefault();
         
         if(nombre === '' | password === '')
             return window.Materialize.toast('User or password are empty.', 1000);
+        if(nombre === 'admin' && password === 'admin') return this.props.history.push("/dashboard");
+            return window.Materialize.toast('User or password are incorrect.', 1000);
 
-        fetch('http://localhost:3005/autenticar',{
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(
-            // Model
-            {
-                username: nombre,
-                password: password}
-          )
-        })
-          .then((data)=> {  
-            if(data.status === 200){
-                return this.props.history.push("/dashboard");
-            }else {
-                window.Materialize.toast('User or password are wrong.', 1000);
-            }
-          })
+        // fetch('http://localhost:3005/autenticar',{
+        //   method: 'POST',
+        //   headers: {
+        //     'Accept': 'application/json',
+        //     'Content-Type': 'application/json'
+        //   },
+        //   body: JSON.stringify(
+        //     // Model
+        //     {
+        //         username: nombre,
+        //         password: password}
+        //   )
+        // })
+        //   .then((data)=> {  
+        //     if(data.status === 200){
+        //         return this.props.history.push("/dashboard");
+        //     }else {
+        //         window.Materialize.toast('User or password are wrong.', 1000);
+        //     }
+        //   })
     
+
       }
     
 

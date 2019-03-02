@@ -17,49 +17,56 @@ const Inicio = () => {
             <Row className='m-0'>
               <Col m={12}>
                 <Row className='m-0'>
+
                   <Col m={3}>
                     <CardPanel className="black-text">
-                      <h5>Saldo Pendiente</h5>
+                        <div className='divFlex-space-betwwen'>
+                          <div>
+                            <h5>Cards</h5>
+                          </div>
+                          <div>
+                            <Button floating className={`${stylesInicio.greenAdd} `} waves='light' icon='add' />  
+                          </div>
+                        </div>
+                          <div className="divider green-1-light"></div>
+                        <br/>
+                        <div className='divFlex-space-betwwen'>
+                          <div>
+                            <h6> Kevin Gonzalez  </h6>
+                          </div>
+                          <div>
+                            <Icon right>credit_card</Icon>
+                          </div>
+                        </div>
+                    </CardPanel>
+                  </Col>   
+                  <Col m={3}>
+                    <CardPanel className="black-text">
+                      <h5>Closing date</h5>
                       <div className="divider green-1-light"></div>
                       <div className='divFlex-center'>
                         <div>
-                          <h5> $ asdasd  </h5>
+                          <h5> 13 de abril de 2019  </h5>
                         </div>
                       </div>
                     </CardPanel>
                   </Col>
                   <Col m={3}>
                     <CardPanel className="black-text">
-                      <h5>Saldo Disponible</h5>
+                      <h5>Amount to pay</h5>
                       <div className="divider green-1-light"></div>
                       <div className='divFlex-center'>
                         <div>
-                          <h5> 25 de febrero  </h5>
+                          <h5> $ 0  </h5>
                         </div>
                       </div>
                     </CardPanel>
                   </Col>
                   <Col m={3}>
                     <CardPanel className="black-text">
-                      <h5>Fecha Corte</h5>
-                      <div className="divider green-1-light"></div>
                       <div className='divFlex-center'>
                         <div>
-                          <h5> $ asdasdasd  </h5>
-                        </div>
-                      </div>
-                    </CardPanel>
-                  </Col>
-                  <Col m={3}>
-                    <CardPanel className="black-text">
-                      <h5>Card</h5>
-                      <div className="divider divider green-1-light"></div>
-                      <div className='divFlex-space-betwwen divFlex-ai-center'>
-                        <div>
-                          <Icon small left>credit_card</Icon>
-                        </div>
-                        <div>
-                          <h5> **** **** **** 1234  </h5>
+                          <Button waves='light' className='btn-large'> pay now</Button>
                         </div>
                       </div>
                     </CardPanel>
@@ -71,31 +78,10 @@ const Inicio = () => {
           
           <CardPanel className="grey lighten-3 black-text">
             <Row className='m-0'>
-              <Col m={3}>
-                <CardPanel className="black-text vh-23">
-                    <div className='divFlex-space-betwwen'>
-                      <div>
-                        <h5>Cards</h5>
-                      </div>
-                      <div>
-                        <Button floating className={`${stylesInicio.greenAdd} `} waves='light' icon='add' />  
-                      </div>
-                    </div>
-                      <div className="divider green-1-light"></div>
-                    <br/>
-                    <div className='divFlex-space-betwwen'>
-                      <div>
-                        <h6> Kevin Gonzalez  </h6>
-                      </div>
-                      <div>
-                        <Icon right>credit_card</Icon>
-                      </div>
-                    </div>
-                </CardPanel>
-              </Col>
+
 
               {/* Graficas  */}
-              <Col m={9}>
+              <Col m={12}>
                 <CardPanel className="black-text">
                   <Graphics></Graphics>
                 </CardPanel>
