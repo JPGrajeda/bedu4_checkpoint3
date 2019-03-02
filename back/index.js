@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 
 require('./routes/tarjetasRoutes')(app);
 
+require('./routes/serviciosRoutes')(app);
+
 // Configuration for heroku
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('front/build'));
