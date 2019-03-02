@@ -9,7 +9,7 @@ module.exports = (app) => {
             const response = await Servicios.find({});
             res.send(response);
         } catch (error) {
-            console.log('error api Servicios');
+            console.log('error backend servicios');
             res.send(error.message);
         }
 	});
