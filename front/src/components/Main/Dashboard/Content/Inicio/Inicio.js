@@ -11,7 +11,6 @@ import Graphics from './Graphics/Graphics';
 import CardContainer from './Cards/CardsContainer';
 
 import axios from 'axios';
-import { log } from 'util';
 
 class Inicio extends Component {
 
@@ -66,8 +65,13 @@ class Inicio extends Component {
           </Card>
         </Col>
         )
+      }else{
+        return( 
+          ''
+        )
       }
     });
+  
 
     let show = unique.map((obj,index) => {
       let title;

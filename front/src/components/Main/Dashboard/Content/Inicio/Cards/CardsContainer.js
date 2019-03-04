@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // components materialize
-import {CardPanel, Icon, Button, Modal, Row, Input } from 'react-materialize'
+import {CardPanel, Button, Modal, Row, Input } from 'react-materialize'
 import axios from 'axios';
 // imports css style
 import stylesInicio from '../Inicio.module.css';
