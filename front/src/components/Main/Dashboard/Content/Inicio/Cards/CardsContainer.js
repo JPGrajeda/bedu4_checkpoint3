@@ -9,14 +9,15 @@ class CardsContainer extends Component{
   constructor(props) {
     super(props);
     this.state= {
-      _id:"",
-      card_number: "",
-      security_code:0,
-      exp_date_mm:"",
-      exp_date_yy:"",
-      alias:"",
+      _id:'',
+      card_number: '',
+      security_code:'',
+      exp_date_mm:'',
+      exp_date_yy:'',
+      alias:'',
       cards:[],
       isModalOpen:false,
+      isModalEditOpen:false
     }
   }
  
@@ -34,6 +35,7 @@ class CardsContainer extends Component{
       })
   }
 
+// guarda los cambios en nueva y edicion de card 
   AddCard = async(e)=>{
     e.preventDefault();
     const card = {
@@ -43,14 +45,20 @@ class CardsContainer extends Component{
       fechaVencimiento: `${this.state.exp_date_mm}-${this.state.exp_date_yy} `,
       alias: this.state.alias,
     }
+
     try{
-      await  axios.post(this.state._id ? 'http://localhost:5000/api/tarjetas':`http://localhost:5000/api/tarjetas/${this.state._id}`,card)
-      this.setState({isModalOpen:false})
+      console.log(this.state._id);
+      console.log(this.state._id === ''? 'http://localhost:5000/api/tarjetas':`http://localhost:5000/api/tarjetas/${this.state._id}`);
+      await  axios.post(this.state._id=== '' ? 'http://localhost:5000/api/tarjetas':`http://localhost:5000/api/tarjetas/${this.state._id}`,card)
+      this.setState({
+        isModalOpen: false,
+        isModalEditOpen:false
+      }) 
       this.GetCardsAPI();
     }
     catch(error) {
       console.error(error);
-    }
+    }   
   }
 
   handleInputChange = event => {
@@ -58,8 +66,52 @@ class CardsContainer extends Component{
       [event.target.id]: event.target.value,
     });
   };
+  
+  //Abre modal para nueva card
   handleOpenModal = (x)=>{
-    this.setState({isModalOpen:true});
+    this.clearState();
+    this.setState({isModalOpen: true}) 
+    var objForm = this.refs.newModal;
+    objForm.showModal();
+  }
+
+   //Abre modal para editar una card seleccionada
+  onUpdateCard = async(x)=>{
+    try{
+      console.log('entro al editar', x);
+      const response = await axios.get(`http://localhost:5000/api/tarjetas/${x._id}`);
+      var result;
+      result = response.data[0].fechaVencimiento.split("-"); 
+      this.setState({
+        isModalOpen: true,
+        _id:response.data[0]._id,
+        card_number: response.data[0].cuenta,
+        security_code:response.data[0].pin,
+        exp_date_mm:result[0],
+        exp_date_yy:result[1],
+        alias:response.data[0].alias,  
+        isModalEditOpen: true      
+      })
+     
+      var objForm = this.refs.updateModal;
+      objForm.showModal();
+     
+    }
+    catch(error){
+      console.error(error);
+    }
+  }
+
+
+  clearState=()=>{
+    this.setState({
+      _id:'',
+      card_number: '',
+      security_code:'',
+      exp_date_mm:'',
+      exp_date_yy:'',
+      alias:'',        
+    })
   }
 
   onDeleteCard = async(x) =>{
@@ -72,36 +124,52 @@ class CardsContainer extends Component{
     }
   }
 
-  onUpdateCard = async(x)=>{
-    try{
-      const response = await axios.get(`http://localhost:5000/api/tarjetas/${x._id}`);
-      this.setState({
-        _id:response.data[0]._id,
-        card_number: response.data[0].cuenta,
-        security_code:response.data[0].pin,
-        exp_date_mm:response.data[0].fechaVencimiento,
-        exp_date_yy:response.data[0].fechaVencimiento,
-        alias:response.data[0].alias,
-        isModalOpen: true
-      })
-    }
-    catch(error){
-      console.error(error);
-    }
+  closeModals = () =>{
+      this.setState({isModalOpen: false}) 
+      this.setState({isModalEditOpen: false}) 
   }
 
+ 
+
+
   render(){
+    const formita = 
+    <form onSubmit={(e)=>this.AddCard(e)}>
+      <Row>
+            <Input required autoFocus id="card_number" s={6} label="Card Number" placeholder="**** **** **** ****" onChange={(e) => this.handleInputChange(e)}  value={this.state.card_number}/>
+            <Input required id="exp_date_mm"  s={3} label="Expiration date" placeholder="MM" onChange={(e) => this.handleInputChange(e)}  value={this.state.exp_date_mm}/> 
+            <Input required id="exp_date_yy" s={3} placeholder="YY" onChange={(e) => this.handleInputChange(e)} value={this.state.exp_date_yy} /> 
+            <Input required id="security_code" s={3} label="Security Code" placeholder="***" onChange={(e) => this.handleInputChange(e)} value={this.state.security_code}/>
+            <Input required id="alias" s={6} label="Alias" placeholder=" " onChange={(e) => this.handleInputChange(e)} value={this.state.alias}/>
+        </Row>
+        <Button type="submit" waves='light'>Save</Button>
+    </form>;
+
           return(
           <div>
               <CardPanel className="black-text">
-                          <div className='divFlex-space-betwwen'>
-                            <div>
-                              <h5>Cards </h5>
-                            </div>
-                            <div>
-                              <Button  floating className={`${stylesInicio.greenAdd} `} waves='light' icon='add' onClick={()=>this.handleOpenModal()} /> 
-                              <div className="divider green-1-light"></div>
-                              <table  className='divFlex-space-betwwen'>
+              <div className='divFlex-center'>
+                <h5>Cards </h5>
+                <Button  floating className={`${stylesInicio.greenAdd} `} waves='light' icon='add' onClick={()=>this.handleOpenModal()}>  </Button>
+                <Modal 
+                
+                 open={this.state.isModalOpen}
+                 actions= {
+                  <div onClick={()=>this.closeModals()}>
+                      <Button flat modal="close" waves="light">Close</Button>
+                  </div>
+                  }
+                  dismissible = "true" 
+                  ref="newModal"
+                  header='NEW payment method'>
+                  <p>We don't share your financial details with the merchant</p>
+                  {formita}
+
+               </Modal>
+              </div>
+              <div className="divider green-1-light"></div>
+              <div className='divFlex-center'>
+              <table className='divFlex-space-betwwen'>
                                 <tbody>
                                   {this.state.cards.map(x=> {
                                     return(
@@ -112,7 +180,20 @@ class CardsContainer extends Component{
                                               </h6>
                                           </td>
                                           <td>
-                                              <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' onClick= {()=>this.onUpdateCard(x)}/> 
+                                          <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' onClick= {()=>this.onUpdateCard(x)}/> 
+                                          <Modal
+                                              open={this.state.isModalEditOpen}
+                                              actions= {
+                                                <div onClick={()=>this.closeModals()}>
+                                                    <Button flat modal="close" waves="light">Close</Button>
+                                                </div>
+                                                }
+                                                dismissible = "true" 
+                                              ref="updateModal"
+                                              header='UPDATE a payment method'>
+                                              <p>We don't share your financial details with the merchant</p>
+                                                {formita}
+                                          </Modal>
                                           </td>
                                           <td>
                                               <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete'  onClick= {()=>this.onDeleteCard(x)}/>
@@ -122,28 +203,9 @@ class CardsContainer extends Component{
                                 })}
                                 </tbody>
                               </table>
-                              <Modal
-                                open={this.state.isModalOpen}
-                                header='Provide a payment method'>
-                                <p>We don't share your financial details with the merchant</p>
-                                <form onSubmit={(e)=>this.AddCard(e)}>
-                                  <Row>
-                                        <Input required autoFocus id="card_number" s={6} label="Card Number" onChange={(e) => this.handleInputChange(e)}  value={this.state.card_number}/>
-                                        <Input required id="exp_date_mm"  s={3} label="Expiration date" placeholder="MM" onChange={(e) => this.handleInputChange(e)}  value={this.state.exp_date_mm}/> 
-                                        <Input required id="exp_date_yy" s={3} placeholder="YY" onChange={(e) => this.handleInputChange(e)} value={this.state.exp_date_yy} /> 
-                                        <Input required id="security_code" s={3} label="Security Code" onChange={(e) => this.handleInputChange(e)} value={this.state.security_code}/>
-                                        <Input required id="alias" s={6} label="Alias" onChange={(e) => this.handleInputChange(e)} value={this.state.alias}/>
-                                    </Row>
-                                    <Button type="submit" waves='light'>Save</Button>
-                                </form>
-                                  
-                            </Modal>
-                            </div>
-                          </div>
-                          
-                        
-                      </CardPanel>
-                      
+              </div>
+                             
+        </CardPanel>
           </div>
           )
       }
