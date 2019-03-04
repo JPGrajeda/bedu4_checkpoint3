@@ -146,7 +146,7 @@ class Graphics extends Component {
                           height={200}
                       />
         }else{
-          chartPie = chartBar = <label>asdasd</label>;
+          chartPie = chartBar = <div class="card-panel teal lighten-2 txt-center white-text ft-20">The card does not have payments.</div>;
         }
         
 
