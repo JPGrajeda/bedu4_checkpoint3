@@ -22,8 +22,8 @@ const Upbar = () => {
                 right 
                 fixed
             >
-                <NavItem className='green-1'><NavLink to="/dashboard">Home</NavLink> </NavItem>
-                <NavItem className='green-1'><NavLink to="/">Sign out</NavLink> </NavItem>
+                
+                <NavLink to="/"><NavItem className='green-1'>Sign out</NavItem></NavLink> 
             </Navbar>
         </>
     )
