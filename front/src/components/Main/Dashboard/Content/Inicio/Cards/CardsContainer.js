@@ -17,7 +17,8 @@ class CardsContainer extends Component{
       alias:'',
       cards:[],
       isModalOpen:false,
-      isModalEditOpen:false
+      isModalEditOpen:false,
+      selectedCard_id:'5c7d9a472e3a330464f4c4fe'
     }
   }
  
@@ -130,7 +131,12 @@ class CardsContainer extends Component{
   }
 
  
-
+  onSelectCard = (x)=>{
+    this.setState({
+      selectedCard_id: x._id
+    })
+    console.log(this.state.selectedCard_id);
+  }
 
   render(){
     const formita = 
@@ -173,7 +179,10 @@ class CardsContainer extends Component{
                                 <tbody>
                                   {this.state.cards.map(x=> {
                                     return(
-                                      <tr key={x._id}>
+                                      <tr key={x._id} style={{ backgroundColor: this.state.selectedCard_id === x._id? 'silver': 'white'}} >
+                                          <td>
+                                          <Button style={{padding: '0px'}} flat  waves='teal'  icon='check'  onClick= {()=>this.onSelectCard(x)}/>
+                                          </td>
                                           <td>
                                               <h6> 
                                                 {x.alias} 
