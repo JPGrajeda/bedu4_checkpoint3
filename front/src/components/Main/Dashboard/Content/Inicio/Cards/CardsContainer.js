@@ -28,7 +28,7 @@ class CardsContainer extends Component{
   }
 
   GetCardsAPI = async() => {
-       axios.get('http://localhost:5000/api/tarjetas')
+       axios.get('/api/tarjetas')
       .then(response => {
         this.setState({ cards: response.data });
       })
@@ -50,8 +50,8 @@ class CardsContainer extends Component{
 
     try{
       console.log(this.state._id);
-      console.log(this.state._id === ''? 'http://localhost:5000/api/tarjetas':`http://localhost:5000/api/tarjetas/${this.state._id}`);
-      await  axios.post(this.state._id=== '' ? 'http://localhost:5000/api/tarjetas':`http://localhost:5000/api/tarjetas/${this.state._id}`,card)
+      console.log(this.state._id === ''? '/api/tarjetas':`/api/tarjetas/${this.state._id}`);
+      await  axios.post(this.state._id=== '' ? '/api/tarjetas':`/api/tarjetas/${this.state._id}`,card)
       this.setState({
         isModalOpen: false,
         isModalEditOpen:false
@@ -81,7 +81,7 @@ class CardsContainer extends Component{
   onUpdateCard = async(x)=>{
     try{
       console.log('entro al editar', x);
-      const response = await axios.get(`http://localhost:5000/api/tarjetas/${x._id}`);
+      const response = await axios.get(`/api/tarjetas/${x._id}`);
       var result;
       result = response.data[0].fechaVencimiento.split("-"); 
       this.setState({
@@ -117,7 +117,7 @@ class CardsContainer extends Component{
 
   onDeleteCard = async(x) =>{
     try{
-      await axios.delete(`http://localhost:5000/api/tarjetas/${x._id}`);
+      await axios.delete(`/api/tarjetas/${x._id}`);
       this.GetCardsAPI();
     }
     catch(error){
