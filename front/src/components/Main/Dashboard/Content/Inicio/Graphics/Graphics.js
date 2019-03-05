@@ -1,78 +1,15 @@
-import React, {Component} from 'react';
-import {Bar, Pie, Line} from 'react-chartjs-2';
+import React, { Component } from 'react';
+import {Bar, Pie} from 'react-chartjs-2';
+
+import axios from 'axios';
 
 // components materialize
 import {Row, Col, CardPanel } from 'react-materialize';
 
-const data = {
-    labels: ['Telcel', 'SIAPA', 'CFE', 'Sears', 'Netflix', 'June', 'Xbox'],
-    datasets: [
-      {
-        label: 'Gráfica de Servicios con Mayor Gasto',
-        backgroundColor: 'rgba(255,99,132,0.2)',
-        borderColor: 'rgba(255,99,132,1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
-        data: [65, 59, 80, 81, 56, 55, 40]
-      }
-    ]
-  };
-
-  const dataPie = {
-	labels: [
-		'Servicios Públicos',
-		'Tarjetas Departamentales',
-        'Servicios Web',
-        'Videojuegos'
-	],
-	datasets: [{
-		data: [300, 150, 100,50],
-		backgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-        '#FFCE56',
-        '#64FE2E'
-		],
-		hoverBackgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-        '#FFCE56',
-        '#64FE2E'
-		]
-	}]
-};
-
-const dataLine = {
-    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-    datasets: [
-      {
-        label: 'Historico',
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [65, 59, 80, 81, 56, 55, 40, 50, 62, 80, 60, 100]
-      }
-    ]
-  };
 
   const options = {
     maintainAspectRatio: false,
-    responsive: false,
+    responsive: true,
     legend: {
       position: 'left',
       labels: {
@@ -82,42 +19,151 @@ const dataLine = {
   }
 
 class Graphics extends Component {
-    render(){
+
+    state = {
+
+      data : {
+        labels: [],
+        datasets: [
+          {
+            label: 'Gastos de servicios',
+            backgroundColor: [],
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1,
+            hoverBackgroundColor: [],
+            hoverBorderColor: 'rgba(255,99,132,1)',
+            data: []
+          }
+        ]
+      },
+
+      dataPie : {
+        labels: [],
+        datasets: [{
+          data: [],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#64FE2E' ],
+          hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56','#64FE2E']
+        }]
+      }
+
+    }
+
+    getServicio = async (_idT) => {
+      let tipo = await axios.get(`/api/pagosServicio/${_idT}`);
+      let labels = [];
+      let importe = [];
+      let colors = [];
+
+      tipo.data.map((data) => {
+        return labels.push(data._id);
+      });
+
+      tipo.data.map((data) => {
+        return importe.push(data.importe);
+      });
+
+      tipo.data.map((data) => {
+        return colors.push( '#'+Math.floor(Math.random()*16777215).toString(16) );
+      });
+
+      this.setState( prevState => ({
+        data: {
+          ...this.state.data,
+          labels: labels,
+          datasets: [
+            {
+              ...this.state.data.datasets[0],
+              backgroundColor: colors,
+              hoverBackgroundColor: colors,
+              data: importe
+            }
+          ]
+        }
+      }));
+    }
+
+    getTipo = async (_idT) => {
+      let tipo = await axios.get(`/api/pagosTipo/${_idT}`);
+      let labels = [];
+      let importe = [];
+      let colors = [];
+
+      tipo.data.map((data) => {
+        return labels.push(data._id);
+      });
+
+      tipo.data.map((data) => {
+        return importe.push(data.importe);
+      });    
+
+      tipo.data.map((data) => {
+        return colors.push( '#'+Math.floor(Math.random()*16777215).toString(16) );
+      });
+       
+      this.setState( prevState => ({
+        dataPie: {
+          labels: labels,
+          datasets: [
+            {
+              data: importe,
+              backgroundColor: colors,
+              hoverBackgroundColor: colors
+            }
+          ]
+        }
+      }));
+    }
+
+    componentDidMount() {
+      // this.getServicio('5c79762b0d41c7309421dae2');
+      // this.getTipo('5c79762b0d41c7309421dae2');      
+      // console.log('props graficas: ',this.props);    
+    }
+
+    /* Se ejecuta cuando hay cambios*/
+    componentWillReceiveProps(next_props){
+      this.getTipo(next_props.dataT);
+      this.getServicio(next_props.dataT);
+    }
+
+
+    render(){ 
+        
+        const isData = this.state.dataPie.labels;
+        let chartPie, chartBar ;
+        if (isData.length > 0){
+          chartPie = < Pie 
+                          data={this.state.dataPie}
+                          options={options}
+                          height={200}
+                          width={600}
+                      />
+          chartBar = < Bar 
+                          data={this.state.data}
+                          options={{
+                              maintainAspectRatio: false
+                          }}
+                          height={200}
+                      />
+        }else{
+          chartPie = chartBar = <div className="card-panel teal lighten-2 txt-center white-text ft-20">The card does not have payments.</div>;
+        }
+        
+
         return(
             <>
                     <Row>
                         <Col m={6}> 
                             <CardPanel className="green-1-light black-text">
-                                < Pie 
-                                    data={dataPie}
-                                    options={options}
-                                    height={200}
-                                    width={600}
-                                />
+                                {chartPie}
                             </CardPanel>
                         </Col>
                         <Col m={6}>
                             <CardPanel className="green-1-light black-text">
-                                < Bar 
-                                    data={data}
-                                    options={{
-                                        maintainAspectRatio: false
-                                    }}
-                                    height={200}
-                                />
+                                {chartBar}
                             </CardPanel>
                         </Col>
                         
-                    </Row>
-                    <Row>
-                        <Col m={12}>
-                            <CardPanel className="green-1-light black-text">
-                                <Line 
-                                        data={dataLine}
-                                        height={80}
-                                />
-                            </CardPanel>
-                         </Col>
                     </Row>
             </>
             )

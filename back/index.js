@@ -18,7 +18,9 @@ app.use(cors())
 //     res.send('1234');
 // });
 
-require('./routes/tarjetasRoutes')(app);
+require('./routes/tarjetasRoutes')(app); // ROUTES API TARJETAS
+require('./routes/pagosRoutes')(app); // ROUTES API PAGOS
+require('./routes/serviciosRoutes')(app); // ROUTES API SERVICIOS
 
 // Configuration for heroku
 if (process.env.NODE_ENV === 'production') {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 import Main from "./components/Main/Main";
 
 class App extends Component {
@@ -11,13 +11,13 @@ class App extends Component {
 		}
 	}
 
-	async componentDidMount() {
-		let algo = await axios.get('/api/tarjetas');
-		console.log(algo);
-	}
+	// async componentDidMount() {
+	// 	// let algo = await axios.get('/api/tarjetas');
+	// 	// console.log(algo);
+	// }
 
 	render() {
-		console.log(this.state.algo);
+		// console.log(this.state.algo);
 		return (
 			<Main>
 				

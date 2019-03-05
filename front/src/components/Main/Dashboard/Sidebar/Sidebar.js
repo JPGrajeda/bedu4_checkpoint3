@@ -47,7 +47,7 @@ class Sidebar extends Component {
                         <Link to="/dashboard/servicios"  className="link textCoiny">Services</Link>
                         </li> */}
                     <li>
-                        <Link onClick={(e) => this.handleClick(e)} to="/dashboard/historial" className="link textCoiny">Records</Link>
+                        <Link onClick={(e) => this.handleClick(e)} to="/dashboard/historial" className="link textCoiny">Payment history</Link>
                     </li>
                 </SideNav>
     

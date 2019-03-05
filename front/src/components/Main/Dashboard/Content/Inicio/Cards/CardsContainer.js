@@ -6,6 +6,7 @@ import axios from 'axios';
 import stylesInicio from '../Inicio.module.css';
 
 class CardsContainer extends Component{
+
   constructor(props) {
     super(props);
     this.state= {
@@ -103,7 +104,6 @@ class CardsContainer extends Component{
     }
   }
 
-
   clearState=()=>{
     this.setState({
       _id:'',
@@ -135,6 +135,7 @@ class CardsContainer extends Component{
     this.setState({
       selectedCard_id: x._id
     })
+    this.props.action(x._id);
     console.log(this.state.selectedCard_id);
   }
 
@@ -145,7 +146,7 @@ class CardsContainer extends Component{
             <Input required autoFocus id="card_number" s={6} label="Card Number" placeholder="**** **** **** ****" onChange={(e) => this.handleInputChange(e)}  value={this.state.card_number}/>
             <Input required id="exp_date_mm"  s={3} label="Expiration date" placeholder="MM" onChange={(e) => this.handleInputChange(e)}  value={this.state.exp_date_mm}/> 
             <Input required id="exp_date_yy" s={3} placeholder="YY" onChange={(e) => this.handleInputChange(e)} value={this.state.exp_date_yy} /> 
-            <Input required id="security_code" s={3} label="Security Code" placeholder="***" onChange={(e) => this.handleInputChange(e)} value={this.state.security_code}/>
+            <Input required id="security_code" s={3} label="Security Code" placeholder="***" onChange={(e) => this.handleInputChange(e)} value={`${this.state.security_code}`}/>
             <Input required id="alias" s={6} label="Alias" placeholder=" " onChange={(e) => this.handleInputChange(e)} value={this.state.alias}/>
         </Row>
         <Button type="submit" waves='light'>Save</Button>
@@ -154,9 +155,12 @@ class CardsContainer extends Component{
           return(
           <div>
               <CardPanel className="black-text">
-              <div className='divFlex-center'>
-                <h5>Cards </h5>
+              <div className='divFlex-space-betwwen'>
+                <div>
+                  <h5>Cards </h5>
+                </div>
                 <Button  floating className={`${stylesInicio.greenAdd} `} waves='light' icon='add' onClick={()=>this.handleOpenModal()}>  </Button>
+              </div>
                 <Modal 
                 
                  open={this.state.isModalOpen}
@@ -172,7 +176,6 @@ class CardsContainer extends Component{
                   {formita}
 
                </Modal>
-              </div>
               <div className="divider green-1-light"></div>
               <div className='divFlex-center'>
               <table className='divFlex-space-betwwen'>
@@ -180,10 +183,10 @@ class CardsContainer extends Component{
                                   {this.state.cards.map(x=> {
                                     return(
                                       <tr key={x._id} style={{ backgroundColor: this.state.selectedCard_id === x._id? 'silver': 'white'}} >
-                                          <td>
-                                          <Button style={{padding: '0px'}} flat  waves='teal'  icon='check'  onClick= {()=>this.onSelectCard(x)}/>
-                                          </td>
-                                          <td>
+                                          {/* <td>
+                                          <Button style={{padding: '0px'}} flat  waves='teal'  icon='check'  />
+                                          </td> */}
+                                          <td onClick= {()=>this.onSelectCard(x)}>
                                               <h6> 
                                                 {x.alias} 
                                               </h6>
@@ -218,5 +221,6 @@ class CardsContainer extends Component{
           </div>
           )
       }
+
 }
 export default CardsContainer;
