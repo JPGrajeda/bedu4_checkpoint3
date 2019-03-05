@@ -14,7 +14,7 @@ const Upbar = () => {
                 className='blue-grey darken-4'
                 brand={
                     <div className='valign-wrapper'>
-                        <img src='./img/Wallet4.png' className={`${stylesNav.brand} responsive-img`} alt='Logo'></img>
+                        <img src='/img/Wallet4.png' className={`${stylesNav.brand} responsive-img`} alt='Logo'></img>
                         <span className='txtCoiny'>Watch<strong className='ft-green-1 ft-large'>Wallet</strong></span>
                     </div>
                 }

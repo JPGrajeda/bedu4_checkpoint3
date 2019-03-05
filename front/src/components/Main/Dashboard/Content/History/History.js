@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Table, Col, CardPanel, Row } from 'react-materialize';
+import { Table, CardPanel, Row } from 'react-materialize';
 import axios from 'axios';
 
 class History extends Component{
@@ -8,7 +8,6 @@ class History extends Component{
         super(props);
         this.state = {
           pagos: [],
-          
         };
        
     }
@@ -24,48 +23,20 @@ class History extends Component{
 
     render(){
 
-        console.log(this.state.pagos);
-        
-        // let res = this.state.pagos.map(pago => {
-        //     return (
-        //             <tr key={pago._id}>
-        //                 <td>{pago.fecha}</td>
-        //                 <td>{pago.id_tarjeta}</td>
-        //                 <td>{pago.total}</td>
-        //                 <td>
-        //                     {
-        //                         pago.servicio.map( servicio => {
-        //                             return <tr> <td> {servicio.cantidad} </td> </tr>
-        //                         })
-        //                     }
-        //                 </td><td>
-        //                     {
-        //                         pago.servicio.map( servicio => {
-        //                             return <tr> <td> {servicio.nombre} </td> </tr>
-        //                         })
-        //                     }
-        //                 </td>
-        //                 <td>{pago.servicio.nombre}</td>
-        //                 <td>{pago.servicio.importe}</td>
-        //                 <td>{pago.servicio.tipo}</td>
-        //             </tr> 
-        //            )
-        // })
-
-
-        let res = this.state.pagos.map(pago => {
+        console.log('history: ', this.state);
+        let res = this.state.pagos.map( (pago, index) => {
             return (
-                    <>
-                        {
-                            pago.servicio.map( servicio => {
+                    <> 
+                        { 
+                            pago.servicio.map( (servicio, i) => {
                                 return <tr>
-                                         <td> { pago._id }</td>
-                                         <td> { pago.id_tarjeta }</td>
-                                         <td> $ { pago.total }</td>
-                                         <td className='txt-center'> { servicio.cantidad } </td> 
-                                         <td> { servicio.nombre } </td>
-                                         <td> $ { servicio.importe } </td>
-                                         <td> { servicio.tipo } </td>
+                                         <td>{pago._id}</td>
+                                         <td>{pago.id_tarjeta}</td>
+                                         <td>$ {pago.total}</td>
+                                         <td className='txt-center'>{servicio.cantidad}</td> 
+                                         <td>{servicio.nombre}</td>
+                                         <td>$ {servicio.importe}</td>
+                                         <td>{servicio.tipo}</td>
                                        </tr>
                             })
                         }

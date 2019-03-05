@@ -21,7 +21,7 @@ class Sidebar extends Component {
             }
             sibling = sibling.nextSibling
         }
-
+       
         elem.parentNode.classList.add('active');
     
     };
@@ -30,7 +30,13 @@ class Sidebar extends Component {
         this.getSiblings(event.target);
     }
 
-    render(){
+    componentDidMount(){        
+        if (this.props.location.pathname === '/dashboard/history'){
+            this.getSiblings(document.getElementById('history'));
+        }
+    }
+
+    render(){           
 
         var sbar = {
             marginTop: '64px'
@@ -41,10 +47,10 @@ class Sidebar extends Component {
             <>
                 <SideNav id='SideNav' className='blue-grey darken-3' style={sbar} fixed>
                     <li className='active'>
-                        <Link onClick={(e) => this.handleClick(e)}  to="/dashboard" className="link textCoiny" >Home</Link>
+                        <Link onClick={(e) => this.handleClick(e)} to="/dashboard" className="link textCoiny" id='dashboard'>Home</Link>
                     </li>
                     <li>
-                        <Link onClick={(e) => this.handleClick(e)} to="/dashboard/history" className="link textCoiny">Payment history</Link>
+                        <Link onClick={(e) => this.handleClick(e)} to="/dashboard/history" className="link textCoiny" id='history'>Payment history</Link>
                     </li>
                 </SideNav>
     

@@ -13,7 +13,7 @@ const Dashboard = props => {
     return (
         <>
             <Upbar/>
-            <Sidebar/>
+            <Sidebar {...props}/>
             <div className={styles.content}>
                 <Content {...props}/>
             </div>
