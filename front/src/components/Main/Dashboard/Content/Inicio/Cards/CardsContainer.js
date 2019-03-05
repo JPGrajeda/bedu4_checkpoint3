@@ -155,73 +155,71 @@ class CardsContainer extends Component{
           return(
           <div>
               <CardPanel className="black-text">
-              <div className='divFlex-space-betwwen'>
+                  <div className='divFlex-space-betwwen'>
                 <div>
                   <h5>Cards </h5>
                 </div>
                 <Button  floating className={`${stylesInicio.greenAdd} `} waves='light' icon='add' onClick={()=>this.handleOpenModal()}>  </Button>
               </div>
-                <Modal 
-                
-                 open={this.state.isModalOpen}
-                 actions= {
-                  <div onClick={()=>this.closeModals()}>
-                      <Button flat modal="close" waves="light">Close</Button>
-                  </div>
-                  }
-                  dismissible = "true" 
-                  ref="newModal"
-                  header='NEW payment method'>
-                  <p>We don't share your financial details with the merchant</p>
-                  {formita}
+                  <Modal 
+                    open={this.state.isModalOpen}
+                    actions= {
+                      <div onClick={()=>this.closeModals()}>
+                          <Button flat modal="close" waves="light">Close</Button>
+                      </div>
+                      }
+                      dismissible = "true" 
+                      ref="newModal"
+                      header='NEW payment method'>
+                      <p>We don't share your financial details with the merchant</p>
+                      {formita}
 
-               </Modal>
-              <div className="divider green-1-light"></div>
-              {/* <div className='divFlex-center' > */}
-              <Row>
-                <Col m={12}>
-                  <table>
-                      <tbody>
-                        {this.state.cards.map(x=> {
-                          return(
-                            <tr key={x._id} style={{ backgroundColor: this.state.selectedCard_id === x._id? 'silver': 'white'}} >
-                                {/* <td>
-                                <Button style={{padding: '0px'}} flat  waves='teal'  icon='check'  />
-                                </td> */}
-                                <td onClick= {()=>this.onSelectCard(x)}>
-                                    <h6> 
-                                      {x.alias} 
-                                    </h6>
-                                </td>
-                                <td>
-                                <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' onClick= {()=>this.onUpdateCard(x)}/> 
-                                <Modal
-                                    open={this.state.isModalEditOpen}
-                                    actions= {
-                                      <div onClick={()=>this.closeModals()}>
-                                          <Button flat modal="close" waves="light">Close</Button>
-                                      </div>
-                                      }
-                                      dismissible = "true" 
-                                    ref="updateModal"
-                                    header='UPDATE a payment method'>
-                                    <p>We don't share your financial details with the merchant</p>
-                                      {formita}
-                                </Modal>
-                                </td>
-                                <td>
-                                    <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete'  onClick= {()=>this.onDeleteCard(x)}/>
-                                </td>
-                            </tr>
-                            )
-                      })}
-                      </tbody>
-                    </table>
-                </Col>
-               </Row> 
-              {/* </div> */}
-                             
-        </CardPanel>
+                  </Modal>
+                  <div className="divider green-1-light"></div>
+                  {/* <div className='divFlex-center' > */}
+                  <Row>
+                    <Col m={12}>
+                      <table>
+                          <tbody>
+                            {this.state.cards.map(x=> {
+                              return(
+                                <tr key={x._id} style={{ backgroundColor: this.state.selectedCard_id === x._id? 'silver': 'white'}} >
+                                    {/* <td>
+                                    <Button style={{padding: '0px'}} flat  waves='teal'  icon='check'  />
+                                    </td> */}
+                                    <td onClick= {()=>this.onSelectCard(x)}>
+                                        <h6> 
+                                          {x.alias} 
+                                        </h6>
+                                    </td>
+                                    <td>
+                                    <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' onClick= {()=>this.onUpdateCard(x)}/> 
+                                    <Modal
+                                        open={this.state.isModalEditOpen}
+                                        actions= {
+                                          <div onClick={()=>this.closeModals()}>
+                                              <Button flat modal="close" waves="light">Close</Button>
+                                          </div>
+                                          }
+                                          dismissible = "true" 
+                                        ref="updateModal"
+                                        header='UPDATE a payment method'>
+                                        <p>We don't share your financial details with the merchant</p>
+                                          {formita}
+                                    </Modal>
+                                    </td>
+                                    <td>
+                                        <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete'  onClick= {()=>this.onDeleteCard(x)}/>
+                                    </td>
+                                </tr>
+                                )
+                          })}
+                          </tbody>
+                        </table>
+                    </Col>
+                  </Row> 
+                  {/* </div> */}   
+              </CardPanel>
           </div>
           )
       }

@@ -51,33 +51,35 @@ class History extends Component{
                     <section className="section">
 
                     <CardPanel className="grey lighten-3 black-text">
-                        <Row className='m-0'>
-                            <h5 className='ft-bold'>HISTORIAL</h5>
-                            <div className="divider green-1-light"></div>
-                            <br/>
+                        <CardPanel className="green-1-light black-text">
 
-                            <div className="scrollmenu">
-                                <div className="tbl-header">
-                                    <Table className="table" responsive bordered striped>
-                                        <thead >
-                                            <tr className="scrolling-wrapper-flexbox">
-                                                <th>Referencia pago</th>
-                                                <th>Tarjeta</th>
-                                                <th>Total</th>
-                                                <th>Cantidad de Servicio</th>
-                                                <th>Nombre de Servicio</th>
-                                                <th>Importe de Servicio</th>
-                                                <th>Tipo de Servicio</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {res} 
-                                        </tbody>
-                                    </Table>    
-                                </div>
-                            </div>      
+                            <Row className='m-0'>
+                                <h5 className='ft-bold'>HISTORIAL</h5>
+                                <div className="divider green-1-light"></div>
+                                <br/>
 
-                        </Row>
+                                <div className="scrollmenu">
+                                    <div className="tbl-header">
+                                        <Table className="table" responsive bordered striped>
+                                            <thead >
+                                                <tr className="scrolling-wrapper-flexbox">
+                                                    <th>Referencia pago</th>
+                                                    <th>Tarjeta</th>
+                                                    <th>Total</th>
+                                                    <th>Cantidad de Servicio</th>
+                                                    <th>Nombre de Servicio</th>
+                                                    <th>Importe de Servicio</th>
+                                                    <th>Tipo de Servicio</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {res} 
+                                            </tbody>
+                                        </Table>    
+                                    </div>
+                                </div>      
+                            </Row>
+                        </CardPanel>
                     </CardPanel>
 
                     

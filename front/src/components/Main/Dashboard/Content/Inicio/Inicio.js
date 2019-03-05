@@ -149,9 +149,9 @@ class Inicio extends Component {
 
             {/* Graficas  */}
             <Col m={12}>
-              <CardPanel className="black-text">
+              {/* <CardPanel className="black-text"> */}
                 <Graphics dataT={this.state._idT}></Graphics>
-              </CardPanel>
+              {/* </CardPanel> */}
             </Col>
           </Row>
 
