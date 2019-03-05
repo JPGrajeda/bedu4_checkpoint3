@@ -42,12 +42,9 @@ class Sidebar extends Component {
                 <SideNav id='SideNav' className='blue-grey darken-3' style={sbar} fixed>
                     <li className='active'>
                         <Link onClick={(e) => this.handleClick(e)}  to="/dashboard" className="link textCoiny" >Home</Link>
-                        </li>
-                    {/* <li className='active'>
-                        <Link to="/dashboard/servicios"  className="link textCoiny">Services</Link>
-                        </li> */}
+                    </li>
                     <li>
-                        <Link onClick={(e) => this.handleClick(e)} to="/dashboard/historial" className="link textCoiny">Payment history</Link>
+                        <Link onClick={(e) => this.handleClick(e)} to="/dashboard/history" className="link textCoiny">Payment history</Link>
                     </li>
                 </SideNav>
     

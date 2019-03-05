@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // components materialize
-import {CardPanel, Button, Modal, Row, Input } from 'react-materialize'
+import {CardPanel, Button, Modal, Row, Input, Col } from 'react-materialize'
 import axios from 'axios';
 // imports css style
 import stylesInicio from '../Inicio.module.css';
@@ -177,45 +177,49 @@ class CardsContainer extends Component{
 
                </Modal>
               <div className="divider green-1-light"></div>
-              <div className='divFlex-center'>
-              <table className='divFlex-space-betwwen'>
-                                <tbody>
-                                  {this.state.cards.map(x=> {
-                                    return(
-                                      <tr key={x._id} style={{ backgroundColor: this.state.selectedCard_id === x._id? 'silver': 'white'}} >
-                                          {/* <td>
-                                          <Button style={{padding: '0px'}} flat  waves='teal'  icon='check'  />
-                                          </td> */}
-                                          <td onClick= {()=>this.onSelectCard(x)}>
-                                              <h6> 
-                                                {x.alias} 
-                                              </h6>
-                                          </td>
-                                          <td>
-                                          <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' onClick= {()=>this.onUpdateCard(x)}/> 
-                                          <Modal
-                                              open={this.state.isModalEditOpen}
-                                              actions= {
-                                                <div onClick={()=>this.closeModals()}>
-                                                    <Button flat modal="close" waves="light">Close</Button>
-                                                </div>
-                                                }
-                                                dismissible = "true" 
-                                              ref="updateModal"
-                                              header='UPDATE a payment method'>
-                                              <p>We don't share your financial details with the merchant</p>
-                                                {formita}
-                                          </Modal>
-                                          </td>
-                                          <td>
-                                              <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete'  onClick= {()=>this.onDeleteCard(x)}/>
-                                          </td>
-                                      </tr>
-                                      )
-                                })}
-                                </tbody>
-                              </table>
-              </div>
+              {/* <div className='divFlex-center' > */}
+              <Row>
+                <Col m={12}>
+                  <table>
+                      <tbody>
+                        {this.state.cards.map(x=> {
+                          return(
+                            <tr key={x._id} style={{ backgroundColor: this.state.selectedCard_id === x._id? 'silver': 'white'}} >
+                                {/* <td>
+                                <Button style={{padding: '0px'}} flat  waves='teal'  icon='check'  />
+                                </td> */}
+                                <td onClick= {()=>this.onSelectCard(x)}>
+                                    <h6> 
+                                      {x.alias} 
+                                    </h6>
+                                </td>
+                                <td>
+                                <Button style={{padding: '0px'}} flat  waves='teal'  icon='credit_card' onClick= {()=>this.onUpdateCard(x)}/> 
+                                <Modal
+                                    open={this.state.isModalEditOpen}
+                                    actions= {
+                                      <div onClick={()=>this.closeModals()}>
+                                          <Button flat modal="close" waves="light">Close</Button>
+                                      </div>
+                                      }
+                                      dismissible = "true" 
+                                    ref="updateModal"
+                                    header='UPDATE a payment method'>
+                                    <p>We don't share your financial details with the merchant</p>
+                                      {formita}
+                                </Modal>
+                                </td>
+                                <td>
+                                    <Button style={{padding: '0px'}} flat  waves='teal'  icon='delete'  onClick= {()=>this.onDeleteCard(x)}/>
+                                </td>
+                            </tr>
+                            )
+                      })}
+                      </tbody>
+                    </table>
+                </Col>
+               </Row> 
+              {/* </div> */}
                              
         </CardPanel>
           </div>

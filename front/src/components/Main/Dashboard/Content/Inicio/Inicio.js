@@ -103,7 +103,7 @@ class Inicio extends Component {
             <Col m={12}>
               <Row className='m-0'>
 
-                <Col m={3}>
+                <Col m={4}>
                   <CardContainer action={this.childHandler}/>
                 </Col>   
                 
@@ -118,7 +118,7 @@ class Inicio extends Component {
                     </div>
                   </CardPanel>
                 </Col> */}
-                <Col m={3}>
+                <Col m={4}>
                   <CardPanel className="black-text">
                     <h5>Amount to pay</h5>
                     <div className="divider green-1-light"></div>
@@ -129,7 +129,7 @@ class Inicio extends Component {
                     </div>
                   </CardPanel>
                 </Col>
-                <Col m={3}>
+                <Col m={4}>
                   <CardPanel className="black-text">
                     <div className='divFlex-center'>
                       <div>
