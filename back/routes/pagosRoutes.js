@@ -13,7 +13,22 @@ module.exports = (app) => {
             console.log('error api pagos');
             res.send(error.message);
         }
-	});
+    });
+    
+    // app.post('/api/pagos', async (req, res) => {
+    //     try {
+    //         var card = new Tarjeta();
+    //         card.cuenta = req.body.cuenta;
+    //         card.pin= req.body.pin;
+    //         card.fechaVencimiento= req.body.fechaVencimiento;
+    //         card.alias=req.body.alias ;
+    //         await card.save();
+    //         res.send({ message: 'trjeta creada!' });
+    //     } catch (error) {
+    //         console.log('error api tarjetas');
+    //         res.send(error.message);
+    //     }
+    // });
 
     // GET PAGOS POR SERVICIO
     app.get('/api/pagosServicio/:idTarjeta', async (req, res) => {

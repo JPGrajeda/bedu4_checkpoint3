@@ -12,11 +12,14 @@ import CardContainer from './Cards/CardsContainer';
 
 import axios from 'axios';
 
+import swal from 'sweetalert';
+
 class Inicio extends Component {
 
   state = {
     _idT: '',
-    totalAmount: 0,
+    activeSrvs: [],
+    totalServices: 0,
     services: []
   }
 
@@ -36,11 +39,115 @@ class Inicio extends Component {
     }  
   }
 
+  activeServices = (e, nombre, precio) => {
+
+      let check = document.getElementById(e.target.id);
+
+      if (e.target.checked) {
+         swal({
+          title: "Are you sure?",
+          text: "This service will be added for payment!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+          buttons: ['Add', "Cancel"],
+        })
+        .then((willActivated) => {
+          if (!willActivated) { // yes
+          
+            let total = Math.floor(Math.random() * parseFloat(precio)) + parseFloat(precio);           
+            let servicio = { nombre, total };        
+            let addServices = this.state.activeSrvs.concat(servicio);       
+            this.setState({
+              activeSrvs: addServices,
+              totalServices:  (this.state.totalServices + total)
+            })                      
+            swal("The payment was added!", { icon: "success" });
+            check.checked = true;
+          } else { // no
+            swal("The payment was not added!", { icon: "success" });
+            check.checked = false;
+          }
+        });   
+      }else{
+        
+        swal({
+          title: "Are you sure?",
+          text: "This service will be removed for payment!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+          buttons: ['Remove', "Cancel"],
+        })
+        .then((willActivated) => {
+          if (!willActivated) { // yes        
+                     
+            console.log(this.state);
+
+            let srvDelete = this.state.activeSrvs.filter( function(obj) {
+              return obj.nombre === nombre;
+            })
+            
+            // eliminamos el servicio del array
+            let deleteServices = this.state.activeSrvs.filter( function(obj) {
+              return obj.nombre !== nombre;
+            })
+
+            console.log(deleteServices);
+            
+
+            this.setState({
+              activeSrvs: deleteServices,
+              totalServices:  parseFloat(this.state.totalServices - srvDelete[0].total)
+            })   
+
+
+            swal("The payment was removed!", { icon: "success" });
+            check.checked = false;
+          } else { // no
+            swal("The payment was not removed!",{icon: "success"});
+            check.checked = true;
+          }
+        });   
+
+        check.checked = false;
+      }
+      
+  }
+
+  pay = () => {
+
+    swal({
+      title: "Are you sure?",
+      text: "You want to pay for services!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      buttons: ['Pay', "Cancel"],
+    })
+    .then((willActivated) => {
+      if (!willActivated) { // yes 
+
+        console.log(this.state.totalServices.lenght);
+        
+        if(this.state.totalServices === 0)
+          return swal("There are not added services to pay!", { icon: "error" });
+
+        swal("The payment was satisfactory!", { icon: "success" });
+      } else { // no
+        swal("The payment was canceled!", { icon: "success" });
+      }
+    });   
+
+  }
+
   componentDidMount(){
     this.getAllServices();
   }
 
   render(){    
+    console.log(this.state);
+    
     let unique = [...new Set(this.state.services.map(item => item.tipo))];   
 
     let showServices = (type) => this.state.services.map((obj, index) => {
@@ -57,7 +164,7 @@ class Inicio extends Component {
           <div className="switch divFlex-center mt-20">
               <label>
                 Off
-                <input type="checkbox" id={obj._id}/>
+                <input type="checkbox" id={obj._id} onClick={ (e) => this.activeServices(e, obj.nombre, obj.precio) } />
                 <span className="lever"></span>
                 On
               </label>
@@ -94,7 +201,6 @@ class Inicio extends Component {
       )
     });
 
-
     return(
       
       <>
@@ -124,7 +230,7 @@ class Inicio extends Component {
                     <div className="divider green-1-light"></div>
                     <div className='divFlex-center'>
                       <div>
-                        <h5> $ 0  </h5>
+                        <h5> $ {this.state.totalServices}  </h5>
                       </div>
                     </div>
                   </CardPanel>
@@ -133,7 +239,7 @@ class Inicio extends Component {
                   <CardPanel className="black-text">
                     <div className='divFlex-center'>
                       <div>
-                        <Button waves='light' className='btn-large'> pay now</Button>
+                        <Button waves='light' className='btn-large' onClick={()=> this.pay()}> pay now</Button>
                       </div>
                     </div>
                   </CardPanel>
