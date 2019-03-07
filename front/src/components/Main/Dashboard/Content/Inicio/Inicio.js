@@ -39,10 +39,10 @@ class Inicio extends Component {
     }  
   }
 
-  activeServices = (e, nombre, precio) => {
-
+  activeServices = (e, servi) => {
+      console.log(servi);
+      
       let check = document.getElementById(e.target.id);
-
       if (e.target.checked) {
          swal({
           title: "Are you sure?",
@@ -55,8 +55,8 @@ class Inicio extends Component {
         .then((willActivated) => {
           if (!willActivated) { // yes
           
-            let total = Math.floor(Math.random() * parseFloat(precio)) + parseFloat(precio);           
-            let servicio = { nombre, total };        
+            let total = Math.floor(Math.random() * parseFloat(servi.precio)) + parseFloat(servi.precio);           
+            let servicio = {id_servicio: servi._id,  cantidad: 1, nombre: servi.nombre, importe: total, tipo: servi.tipo };        
             let addServices = this.state.activeSrvs.concat(servicio);       
             this.setState({
               activeSrvs: addServices,
@@ -85,12 +85,12 @@ class Inicio extends Component {
             console.log(this.state);
 
             let srvDelete = this.state.activeSrvs.filter( function(obj) {
-              return obj.nombre === nombre;
+              return obj.nombre === servi.nombre;
             })
             
             // eliminamos el servicio del array
             let deleteServices = this.state.activeSrvs.filter( function(obj) {
-              return obj.nombre !== nombre;
+              return obj.nombre !== servi.nombre;
             })
 
             console.log(deleteServices);
@@ -98,7 +98,7 @@ class Inicio extends Component {
 
             this.setState({
               activeSrvs: deleteServices,
-              totalServices:  parseFloat(this.state.totalServices - srvDelete[0].total)
+              totalServices:  parseFloat(this.state.totalServices - srvDelete[0].importe)
             })   
 
 
@@ -115,7 +115,15 @@ class Inicio extends Component {
       
   }
 
-  pay = () => {
+
+  charge = async (data) => {
+    console.log('data: ',data);
+    let pay = await axios.post('/api/pagos',data);
+    return pay;
+  }
+
+
+  pay = async () => {
 
     swal({
       title: "Are you sure?",
@@ -127,8 +135,17 @@ class Inicio extends Component {
     })
     .then((willActivated) => {
       if (!willActivated) { // yes 
+  
+        let pago = {
+            "fecha": '06-03-2018',
+            "id_tarjeta": this.state._idT,
+            "total": this.state.totalServices,
+            "servicio": this.state.activeSrvs
+        }
+        
+        let pay = this.charge(pago);
 
-        console.log(this.state.totalServices.lenght);
+        console.log(pago);
         
         if(this.state.totalServices === 0)
           return swal("There are not added services to pay!", { icon: "error" });
@@ -164,7 +181,7 @@ class Inicio extends Component {
           <div className="switch divFlex-center mt-20">
               <label>
                 Off
-                <input type="checkbox" id={obj._id} onClick={ (e) => this.activeServices(e, obj.nombre, obj.precio) } />
+                <input type="checkbox" id={obj._id} onClick={ (e) => this.activeServices(e, obj) } />
                 <span className="lever"></span>
                 On
               </label>

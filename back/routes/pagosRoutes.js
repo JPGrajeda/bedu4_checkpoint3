@@ -15,20 +15,30 @@ module.exports = (app) => {
         }
     });
     
-    // app.post('/api/pagos', async (req, res) => {
-    //     try {
-    //         var card = new Tarjeta();
-    //         card.cuenta = req.body.cuenta;
-    //         card.pin= req.body.pin;
-    //         card.fechaVencimiento= req.body.fechaVencimiento;
-    //         card.alias=req.body.alias ;
-    //         await card.save();
-    //         res.send({ message: 'trjeta creada!' });
-    //     } catch (error) {
-    //         console.log('error api tarjetas');
-    //         res.send(error.message);
-    //     }
-    // });
+    app.post('/api/pagos', async (req, res) => {
+        try {
+            console.log(req.body);
+
+            console.log(req.body);
+            let fecha = req.body.fecha;
+            let tarjeta = req.body.tarjeta;
+            let total = req.body.total;
+            console.log(fecha);
+            console.log(tarjeta);
+            console.log(total);
+
+            var pago = new Pago();
+            pago.fecha = fecha,
+            pago.id_tarjeta = tarjeta,
+            pago.total = total,
+            // pago.servicio = req.body.servicio[0]
+            await pago.save();
+            res.send({ message: 'Pago creado!' });
+        } catch (error) {
+            console.log('error api tarjetas');
+            res.send(error.message);
+        }
+    });
 
     // GET PAGOS POR SERVICIO
     app.get('/api/pagosServicio/:idTarjeta', async (req, res) => {
